@@ -17,6 +17,20 @@ Quote.init(
     },
     categorie: {
   
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'user',
+        key: 'id'
+      }
+    },
+    quote_categorie: {
+      type: DataTypes.STRING,
+      references: {
+        model: 'Categorie',
+        key: 'genre'
+      }
     }
   },
   {
