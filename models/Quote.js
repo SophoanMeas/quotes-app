@@ -28,12 +28,23 @@ Quote.init(
         model: 'categorie',
         key: 'genre'
       }
+    },
+    created_by: {
+      type: DataTypes.STRING,
+      references: {
+        model: 'user',
+        key: 'username'
+      }
+    },
+    likes: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0
     }
   },
   {
     //table configurations
     sequelize,
-    timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: 'quote'
