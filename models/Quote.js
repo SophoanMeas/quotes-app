@@ -15,9 +15,6 @@ Quote.init(
       type: DataTypes.STRING,
       allowNull: false
     },
-    categorie: {
-  
-    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -28,7 +25,7 @@ Quote.init(
     quote_categorie: {
       type: DataTypes.STRING,
       references: {
-        model: 'Categorie',
+        model: 'categorie',
         key: 'genre'
       }
     }
@@ -39,7 +36,7 @@ Quote.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'user'
+    modelName: 'quote'
   }
 );
 
