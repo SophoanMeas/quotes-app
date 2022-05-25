@@ -2,9 +2,9 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connect');
 
 // create our User model
-class User extends Model {}
+class Categorie extends Model {}
 
-User.init(
+Categorie.init(
   {
      id: {
       type: DataTypes.INTEGER,
@@ -12,25 +12,10 @@ User.init(
       primaryKey: true,
       autoIncrement: true
     },
-    username: {
-      type: DataTypes.STRING,
-      allowNull: false
+      genre: {
+        type: DataTypes.STRING,
+        allowNull: false
     },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: true
-      }
-    },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [4]
-      }
-    }
   },
   {
     //table configurations
@@ -42,4 +27,4 @@ User.init(
   }
 );
 
-module.exports = User;
+module.exports = Quote;
