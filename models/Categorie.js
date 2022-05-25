@@ -27,4 +27,4 @@ Categorie.init(
   }
 );
 
-module.exports = Quote;
+module.exports = Categorie;
