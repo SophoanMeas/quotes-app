@@ -18,3 +18,5 @@ GitHub.init({
         }
     },
 })
+
+module.exports = GitHub;
