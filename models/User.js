@@ -45,6 +45,20 @@ User.init(
             validate: {
                 len: [6]
             }
+        },
+        quotes_id:{
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'quotes',
+                key: 'id'
+            }
+        },
+        github_id:{
+            type: DataTypes.INTEGER,
+            references:{
+                model: 'github',
+                key: 'key'
+            }
         }
     },
     {

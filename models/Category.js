@@ -14,13 +14,6 @@ Category.init(
 		category_name: {
 			type: DataTypes.STRING,
 			allowNull: false
-		},
-		quotes_id: {
-			type: DataTypes.INETEGER,
-			references: {
-				model: 'quotes',
-				key: 'id'
-			}
 		}
 	},
 	{

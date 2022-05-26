@@ -22,20 +22,9 @@ Quotes.init(
 			type: DataTypes.INTEGER,
 			allowNull: true
 		},
-		createAt: {
-			type: DataTypes.DATE,
-			allowNull: false
-		},
 		createdBy: {
 			type: DataTypes.STRING,
 			allowNull: false
-		},
-		user_id: {
-			type: DataTypes.INTEGER,
-			references: {
-				model: 'user',
-				key: 'id'
-			}
 		},
 		category_id: {
 			type: DataTypes.INTEGER,
