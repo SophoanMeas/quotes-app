@@ -1,18 +1,16 @@
 const router = require('express').Router();
 
-const apiRoutes = require('./api');
-router.use('/api', apiRoutes);
 
-//if we make a request to any endpoint that doesn't exist. 
-router.use((req, res) => {
-  res.status(404).end();
-});
-
-
-// const apiRoute = require('./api')
+// const apiRoute = require('./api') //potential bug
 const homeRoutes = require('./home-routes')
 
 router.use('/', homeRoutes);
-// router.use('/api', apiRoutes)
+// // router.use('/api', apiRoutes)
+
+
+router.use((req, res) => { //if we make a request to any endpoint that doesn't exist. 
+  res.status(404).end();
+});
+
 
 module.exports = router;
