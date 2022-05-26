@@ -17,6 +17,14 @@ GitHub.init({
             isAlphanumeric: true,
         }
     },
-})
+},
+{
+    sequelize,
+    freezeTableName: true,
+    underscored: true,
+    timestamps: false,
+    modelName: 'category',
+}
+)
 
 module.exports = GitHub;

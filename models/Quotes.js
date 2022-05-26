@@ -20,9 +20,10 @@ Quotes.init(
 		},
 		likes: {
 			type: DataTypes.INTEGER,
-			allowNull: true
+			allowNull: false,
+			defaultValue: 0
 		},
-		createdBy: {
+		created_by: {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
