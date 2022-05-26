@@ -36,12 +36,12 @@ router.get('/:category_id', (req, res) => {
 
 // POST /api/quotes
 router.post('/', (req, res) => {
-  // expects {id: 1, description: "text", created_by: "Adrian", category_id: 1}
+  // expects { description: "text", created_by: "Adrian", category_id: 1}
   Quotes.create({
-    id: req.body.id, 
     description: req.body.description, 
-    created_by: req.body.created_by, 
-    category_id: req.body.category_id
+    likes: req.body.likes, 
+    created_by: req.body.created_by,
+    category_id: req.body.category_id, 
   })
     .then(quoteData => res.json(quoteData))
     .catch(err => {

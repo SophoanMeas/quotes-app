@@ -20,12 +20,12 @@ Quotes.init(
 		},
 		likes: {
 			type: DataTypes.INTEGER,
-			allowNull: false,
+			// allowNull: false,
 			defaultValue: 0
 		},
 		created_by: {
 			type: DataTypes.STRING,
-			allowNull: false
+			// allowNull: false
 		},
 		category_id: {
 			type: DataTypes.INTEGER,
