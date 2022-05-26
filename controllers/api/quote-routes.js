@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { text } = require('express');
 const { Quotes } = require('../../models');
 
 // GET ALL quotes /api/quotes
