@@ -1,22 +1,22 @@
-const Categorie = require('./Categorie');
-const Quote = require('./Quote');
-const User = require('./User')
+const User = require('./User');
+const Category = require('./Category');
+const Quotes = require('./Quotes');
+const GitHub = require('./Github');
 
-//associations between models
-User.hasMany(Quote, {
-  foreignKey: 'created_by'
+Category.belongsToMany(Quotes, {
+	foreignKey: 'quotes_id'
 });
 
-Quote.belongsTo(User, {
-  foreignKey: 'created_by'
+Quotes.belongsTo(Category, {
+	foreignKey: 'category_id'
 });
 
-Categorie.hasMany(Quote, {
-  foreignKey: 'genre'
-})
+User.belongsToMany(Quotes, {
+	foreignKey: 'quotes_id'
+});
 
-Quote.belongsTo(Categorie, {
-  foreignKey: 'genre'
-})
+User.belongsTo(GitHub, {
+	foreignKey: 'github_id'
+});
 
-module.exports = { User, Quote, Categorie };
+module.exports = { User, Quotes, Category, GitHub };

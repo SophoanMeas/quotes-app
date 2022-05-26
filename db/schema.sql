@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS quote_app_db;
+DROP DATABASE IF EXISTS quotes_smith_db;
 
-CREATE DATABASE quote_app_db;
+CREATE DATABASE quotes_smith_db;
