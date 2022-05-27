@@ -3,7 +3,7 @@ const router = require('express').Router();
 // TODO: Import the custom middleware
 
 // GET all galleries for homepage
-router.get('/', async (req, res) => {
+router.get('/author:', async (req, res) => {
 
     res.send('Welcome to Quotes-Smith Homepage');
   

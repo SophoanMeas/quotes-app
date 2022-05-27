@@ -2,19 +2,19 @@ const router = require('express').Router();
 const { Quotes } = require('../../models');
 
 // GET ALL quotes /api/quotes
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   // this is equal to SELECT * FROM Quotes;
-  Quotes.findAll()
-    .then(quoteData = res.json(quoteData))
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+  // Quotes.findAll()
+  //   .then(quoteData = res.json(quoteData))
+  //   .catch(err => {
+  //     console.log(err);
+  //     res.status(500).json(err);
+  //   });
+  res.send("test")
 });
 
-
 // GET /api/quotes/category-id
-router.get('/:category_id', (req, res) => {
+router.get('/:id', (req, res) => {
   Quotes.findOne({
     where: {
       category_id: req.params.category_id

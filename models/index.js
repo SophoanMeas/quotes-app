@@ -4,6 +4,8 @@ const Quotes = require('./Quotes');
 const GitHub = require('./Github');
 
 Category.belongsToMany(Quotes, {
+    through: Quotes,
+    as: 'category_quotes',
 	foreignKey: 'quotes_id'
 });
 
@@ -12,6 +14,8 @@ Quotes.belongsTo(Category, {
 });
 
 User.belongsToMany(Quotes, {
+    through: Quotes,
+    as: 'User_quotes',
 	foreignKey: 'quotes_id'
 });
 
