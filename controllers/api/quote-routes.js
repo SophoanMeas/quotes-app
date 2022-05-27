@@ -28,23 +28,22 @@ router.put('/like', (req, res) => {
     user_id: req.body.user_id,
     quote_id: req.body.quote_id
   })
-  .then(() => {
-    //find the quote just liked
-    return Quotes.findOne({
-      where: {
-        id: req.body.quote_id
-      },
-      attributes: [
-        'description',
-        'author'
-        // use raw MySQL aggregate function query to get a count of how many votes the post has and return it under the name `vote_count`
-        [
-          sequelize.literal('(SELECT COUNT(*) FROM like WHERE quotes.id = like.quote_id)'),
-          'likes'
-        ]  
-      ]
-    })
-  })
+  // .then(() => {
+  //   return Quotes.findOne({
+  //     where: {
+  //       id: req.body.quote_id
+  //     },
+  //     attributes: [
+  //       'id',
+  //       'description'
+  //       // use raw MySQL aggregate function query to get a count of how many likes
+  //       [
+  //         sequelize.literal('(SELECT COUNT(*) FROM like WHERE quotes.id = like.quote_id)'),
+  //         'likes'
+  //       ]  
+  //     ]
+  //   })
+  // })
     .then(quoteData => res.json(quoteData))
     .catch(err => {
       console.log(err);
