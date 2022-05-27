@@ -4,7 +4,7 @@ CREATE DATABASE quotes_smith_db;
 
 
 
-/* 
+ 
 INSERT INTO category (category_name)
 VALUES ("Work"),
         ("Love"),
@@ -24,16 +24,16 @@ VALUES ("User1", "Cody", "Bank", "cody@email.com", "codypass"),
         ("User10", "Arturo", "Luna", "arturo@email.com", "arturopass");
 
 
-INSERT INTO quotes (description, author, posted_by, category_id)
-VALUES  ("Life is a mistery", "Unknown", 1, 3),
-        ("Life is a joyride", "Adele", 1, 3),
-        ("Love is a sunchine", "Unknown", 2, 2),
-        ("Love is a thief", "Unknown", 2, 2),
-        ("Work is a bother", "Unknown", 3, 1),
-        ("Work is a ruin", "Miranda", 3, 1),
-        ("Spirituality is a question", "Unknown", 4, 4),
-        ("Spirituality is a puzzling dilema", "God", 4, 4),
-        ("Work never ends", "Pita Amore", 5, 1),
-        ("Work will always be there", "Unknown", 5, 1),
-        ("Love can tear you apart", "Unknown", 6, 2),
-        ("Love can take you to other places", "Unknown", 6, 2), */
+INSERT INTO quotes (description, author, posted_by, category_id, created_at, updated_at)
+VALUES  ("Life is a mistery", "Unknown", 1, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+        ("Life is a joyride", "Adele", 1, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+        ("Love is a sunchine", "Unknown", 2, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+        ("Love is a thief", "Unknown", 2, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+        ("Work is a bother", "Unknown", 3, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+        ("Work is a ruin", "Miranda", 3, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+        ("Spirituality is a question", "Unknown", 4, 4, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+        ("Spirituality is a puzzling dilema", "God", 4, 4, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+        ("Work never ends", "Pita Amore", 5, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+        ("Work will always be there", "Unknown", 5, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+        ("Love can tear you apart", "Unknown", 6, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+        ("Love can take you to other places", "Unknown", 6, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);

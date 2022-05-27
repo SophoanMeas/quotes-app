@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Quotes } = require('../../models');
+const { Quotes, User, Category } = require('../../models');
 
 // GET ALL quotes /api/quotes
 router.get('/', (req, res) => {
