@@ -1,31 +1,22 @@
 const User = require('./User');
-// const Category = require('./Category');
+const Category = require('./Category');
 const Quotes = require('./Quotes');
-// const GitHub = require('./Github');
-
-// Category.hasMany(Quotes, {
-//   foreignKey: 'category_id'
-// });
-
-// Quotes.belongsTo(Category, {
-//   foreignKey: 'category_id',
-//   onDelete: 'SET NULL'
-// });
 
 // Category.belongsToMany(Quotes, {
-// 	foreignKey: 'quotes_id'
+//   through: Quotes,
+//   as: 'category_quotes',
+//   foreignKey: 'quotes_id'
 // });
-
 // Quotes.belongsTo(Category, {
-// 	foreignKey: 'category_id'
+//   foreignKey: 'category_id'
 // });
-
 // User.belongsToMany(Quotes, {
-// 	foreignKey: 'quotes_id'
+//   through: Quotes,
+//   as: 'User_quotes',
+//   foreignKey: 'quotes_id'
 // });
-
 // User.belongsTo(GitHub, {
-// 	foreignKey: 'github_id'
+//   foreignKey: 'github_id'
 // });
 
-module.exports = { Quotes, User };
+module.exports = { Quotes, User, Category };
