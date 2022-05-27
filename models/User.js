@@ -49,13 +49,7 @@ User.init(
                 len: [6]
             }
         },
-        quotes_id:{
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'quotes',
-                key: 'id'
-            }
-        },
+    
     },
     {
         hooks: {

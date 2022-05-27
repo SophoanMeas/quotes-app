@@ -15,17 +15,29 @@ Quotes.init(
 			type: DataTypes.STRING,
 			allowNull: false,
 			validate: {
-				len: [ 1 ]
+				len: [ 2 ]
 			}
 		},
+        author:{
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                isAlpha: true,
+                len: [2]
+            }
+        },
 		likes: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 			defaultValue: 0
 		},
-		created_by: {
-			type: DataTypes.STRING,
-			allowNull: false
+		user_id: {
+			type: DataTypes.INTEGER,
+            field: 'created_by_id',
+			references:{
+                model: 'user',
+                key: 'id'
+            }
 		},
 		category_id: {
 			type: DataTypes.INTEGER,
@@ -38,6 +50,7 @@ Quotes.init(
 	{
 		sequelize,
 		freezeTableName: true,
+        timestamps: false,
 		underscored: true,
 		modelName: 'quotes'
 	}
