@@ -17,6 +17,13 @@ Quotes.init(
 			validate: {
 				len: [ 1 ]
 			}
+		},
+		author: {
+			type: DataTypes.STRING,
+			// allowNull: false,
+			validate: {
+				len: [ 1 ]
+			}
 		}
 	// 	,
 	// 	likes: {
@@ -26,13 +33,17 @@ Quotes.init(
 	// 	},
 	// 	created_by: {
 	// 		type: DataTypes.STRING,
-	// 		// allowNull: false
+	// 		allowNull: false
+	// 		references: {
+	// 			model: 'user',
+	// 			key: 'username'
+	// 		}
 	// 	},
-	// 	category_id: {
+	// 	category_name: {
 	// 		type: DataTypes.INTEGER,
 	// 		references: {
 	// 			model: 'category',
-	// 			key: 'id'
+	// 			key: 'category_name'
 	// 		}
 	// 	}
 	},
@@ -40,6 +51,7 @@ Quotes.init(
 		sequelize,
 		freezeTableName: true,
 		underscored: true,
+		timestamps: false,
 		modelName: 'quotes'
 	}
 );
