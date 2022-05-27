@@ -4,9 +4,9 @@ const sequelize = require('../config/connection');
 
 
 class User extends Model{
-//     checkPassword(loginPwd){
-//         return bcrypt.compareSync(loginPwd, this.password);
-//     }
+    checkPassword(loginPwd){
+        return bcrypt.compareSync(loginPwd, this.password);
+    }
 }
 
 User.init(
@@ -56,21 +56,14 @@ User.init(
         //         key: 'id'
         //     }
         // },
-        // // github_id:{
-        // //     type: DataTypes.INTEGER,
-        // //     references:{
-        // //         model: 'user',
-        // //         key: 'key'
-        // //     }
-        // // }
     },
     {
-        // hooks: {
-        //     async beforeCreate(newUserData){
-        //         newUserData.password = await bcrypt(newUserData.password, 10);
-        //         return newUserData
-        //     }
-        // },
+        hooks: {
+            async beforeCreate(newUserData){
+                newUserData.password = await bcrypt(newUserData.password, 10);
+                return newUserData
+            }
+        },
         sequelize,
         freezeTableName: true,
         timestamps: false,
