@@ -2,22 +2,22 @@ const router = require('express').Router();
 const { Quotes } = require('../../models');
 
 // GET ALL quotes /api/quotes
-router.get('/', async (req, res) => {
-  // this is equal to SELECT * FROM Quotes;
-  // Quotes.findAll()
-  //   .then(quoteData = res.json(quoteData))
-  //   .catch(err => {
-  //     console.log(err);
-  //     res.status(500).json(err);
-  //   });
-  res.send("test")
+router.get('/', (req, res) => {
+  // Access our User model and run .findAll() method)
+  Quotes.findAll()
+    .then(quoteData => res.json(quoteData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
+
 
 // GET /api/quotes/category-id
 router.get('/:id', (req, res) => {
   Quotes.findOne({
     where: {
-      category_id: req.params.category_id
+      id: req.params.category_id
     }
   })
     .then(quoteData => {
@@ -36,12 +36,12 @@ router.get('/:id', (req, res) => {
 
 // POST /api/quotes
 router.post('/', (req, res) => {
-  // expects {id: 1, description: "text", created_by: "Adrian", category_id: 1}
+  // expects { description: "text", created_by: "Adrian", category_id: 1}
   Quotes.create({
-    id: req.body.id, 
-    description: req.body.description, 
-    created_by: req.body.created_by, 
-    category_id: req.body.category_id
+    description: req.body.description 
+    // likes: req.body.likes, 
+    // created_by: req.body.created_by,
+    // category_id: req.body.category_id, 
   })
     .then(quoteData => res.json(quoteData))
     .catch(err => {

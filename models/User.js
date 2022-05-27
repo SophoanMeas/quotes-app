@@ -56,13 +56,6 @@ User.init(
                 key: 'id'
             }
         },
-        github_id:{
-            type: DataTypes.INTEGER,
-            references:{
-                model: 'user',
-                key: 'key'
-            }
-        }
     },
     {
         hooks: {
