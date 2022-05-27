@@ -14,10 +14,10 @@ router.get('/', (req, res) => {
 
 
 // GET /api/quotes/category-id
-router.get('/:category', (req, res) => {
+router.get('/:category_id', (req, res) => {
   Quotes.findOne({
     where: {
-      id: req.params.category
+      category_id: req.params.category_id
     }
   })
     .then(quoteData => {
@@ -38,7 +38,7 @@ router.get('/:category', (req, res) => {
 router.get('/:author', (req, res) => {
   Quotes.findOne({
     where: {
-      id: req.params.author
+      author: req.params.author
     }
   })
     .then(quoteData => {
@@ -61,10 +61,10 @@ router.post('/', (req, res) => {
   // expects { description: "text", created_by: "Adrian", category_id: 1}
   Quotes.create({
     description: req.body.description, 
-    author: req.body.author 
+    author: req.body.author, 
     // likes: req.body.likes, 
-    // created_by: req.body.created_by,
-    // category_id: req.body.category_id, 
+    posted_by: req.body.posted_by,
+    category_id: req.body.category_id, 
   })
     .then(quoteData => res.json(quoteData))
     .catch(err => {

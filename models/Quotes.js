@@ -38,7 +38,7 @@ Quotes.init(
 				key: 'id'
 			}
 		},
-		category: {
+		category_id: {
 			type: DataTypes.INTEGER,
 			references: {
 				model: 'category',
