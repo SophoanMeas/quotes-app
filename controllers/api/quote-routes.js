@@ -4,7 +4,14 @@ const { Quotes } = require('../../models');
 // GET ALL quotes /api/quotes
 router.get('/', (req, res) => {
   // Access our User model and run .findAll() method)
-  Quotes.findAll()
+  Quotes.findAll({
+    include: [
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
+  })
     .then(quoteData => res.json(quoteData))
     .catch(err => {
       console.log(err);
@@ -13,12 +20,18 @@ router.get('/', (req, res) => {
 });
 
 
-// GET /api/quotes/category-id
+// GET quotes by category_id
 router.get('/:category_id', (req, res) => {
   Quotes.findOne({
     where: {
       category_id: req.params.category_id
-    }
+    },
+    include: [
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
   })
     .then(quoteData => {
       if (!quoteData) {
@@ -34,12 +47,18 @@ router.get('/:category_id', (req, res) => {
 });
 
 
-// GET /api/quotes/category-id
+// GET quotes by Author
 router.get('/:author', (req, res) => {
   Quotes.findOne({
     where: {
       author: req.params.author
-    }
+    },
+    include: [
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
   })
     .then(quoteData => {
       if (!quoteData) {
