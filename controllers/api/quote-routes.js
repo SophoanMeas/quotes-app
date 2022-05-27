@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Quotes, User, Category, Like } = require('../../models');
+const sequelize = require('../../config/connection')
 
 // GET ALL quotes /api/quotes
 router.get('/', (req, res) => {
@@ -23,12 +24,32 @@ router.get('/', (req, res) => {
 
 // UPDATE - LIKE a quote
 router.put('/like', (req, res) => {
-  Vote.create({
+  Like.create({
     user_id: req.body.user_id,
-    post_id: req.body.post_id
+    quote_id: req.body.quote_id
   })
-    .then(dbPostData => res.json(dbPostData))
-    .catch(err => res.json(err));
+  .then(() => {
+    //find the quote just liked
+    return Quotes.findOne({
+      where: {
+        id: req.body.quote_id
+      },
+      attributes: [
+        'description',
+        'author'
+        // use raw MySQL aggregate function query to get a count of how many votes the post has and return it under the name `vote_count`
+        [
+          sequelize.literal('(SELECT COUNT(*) FROM like WHERE quotes.id = like.quote_id)'),
+          'likes'
+        ]  
+      ]
+    })
+  })
+    .then(quoteData => res.json(quoteData))
+    .catch(err => {
+      console.log(err);
+      res.status(400).json(err);
+    });
 });
 
 
