@@ -3,9 +3,9 @@ const { Quotes } = require('../../models');
 
 // GET ALL quotes /api/quotes
 router.get('/', (req, res) => {
-  // this is equal to SELECT * FROM Quotes;
+  // Access our User model and run .findAll() method)
   Quotes.findAll()
-    .then(quoteData = res.json(quoteData))
+    .then(quoteData => res.json(quoteData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 router.get('/:category_id', (req, res) => {
   Quotes.findOne({
     where: {
-      category_id: req.params.category_id
+      id: req.params.category_id
     }
   })
     .then(quoteData => {
@@ -38,10 +38,10 @@ router.get('/:category_id', (req, res) => {
 router.post('/', (req, res) => {
   // expects { description: "text", created_by: "Adrian", category_id: 1}
   Quotes.create({
-    description: req.body.description, 
-    likes: req.body.likes, 
-    created_by: req.body.created_by,
-    category_id: req.body.category_id, 
+    description: req.body.description 
+    // likes: req.body.likes, 
+    // created_by: req.body.created_by,
+    // category_id: req.body.category_id, 
   })
     .then(quoteData => res.json(quoteData))
     .catch(err => {
