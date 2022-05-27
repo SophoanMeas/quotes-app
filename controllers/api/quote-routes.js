@@ -1,10 +1,11 @@
 const router = require('express').Router();
-const { Quotes, User, Category } = require('../../models');
+const { Quotes, User, Category, Like } = require('../../models');
 
 // GET ALL quotes /api/quotes
 router.get('/', (req, res) => {
   // Access our User model and run .findAll() method)
   Quotes.findAll({
+    attributes: { exclude: ['updatedAt'] },
     include: [
       {
         model: User,
@@ -20,10 +21,22 @@ router.get('/', (req, res) => {
 });
 
 
+// UPDATE - LIKE a quote
+router.put('/like', (req, res) => {
+  Vote.create({
+    user_id: req.body.user_id,
+    post_id: req.body.post_id
+  })
+    .then(dbPostData => res.json(dbPostData))
+    .catch(err => res.json(err));
+});
+
+
 
 // GET quotes by category_id
 router.get('/:category_id', (req, res) => {
   Quotes.findAll({
+    attributes: { exclude: ['updatedAt'] },
     where: {
       category_id: req.params.category_id
     },
@@ -51,6 +64,7 @@ router.get('/:category_id', (req, res) => {
 // GET quotes by Author
 router.get('/author/:author_name', (req, res) => {
   Quotes.findAll({
+    attributes: { exclude: ['updatedAt'] },
     where: {
       author: req.params.author_name
     },
@@ -93,7 +107,6 @@ router.post('/', (req, res) => {
     });
 });
 
-// UPDATE .... upcoming update
 
 // DELETE ... upcoming update
 
