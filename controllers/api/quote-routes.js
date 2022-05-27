@@ -20,9 +20,10 @@ router.get('/', (req, res) => {
 });
 
 
+
 // GET quotes by category_id
 router.get('/:category_id', (req, res) => {
-  Quotes.findOne({
+  Quotes.findAll({
     where: {
       category_id: req.params.category_id
     },
@@ -48,10 +49,10 @@ router.get('/:category_id', (req, res) => {
 
 
 // GET quotes by Author
-router.get('/:author', (req, res) => {
-  Quotes.findOne({
+router.get('/author/:author_name', (req, res) => {
+  Quotes.findAll({
     where: {
-      author: req.params.author
+      author: req.params.author_name
     },
     include: [
       {
