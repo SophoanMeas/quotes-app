@@ -26,12 +26,12 @@ router.get('/', (req, res) => {
 });
 
 
-//GET 2 Random Quotes
+//GET 2 Random Quotes form the general pool
 router.get('/day', (req, res) => {
   // Access our User model and run .findAll() method)
   Quotes.findAll({
     order: sequelize.literal('rand()'), 
-    limit: 2
+    limit: 1
   })
     .then(quoteData => res.json(quoteData))
     .catch(err => {
@@ -98,7 +98,7 @@ router.get('/favourites', (req, res) => {
 
 
 
-// UPDATE the NUMBEr of LIKES
+// UPDATE the NUMBEr of LIKES (inclrease the general count)
 router.put('/:id', (req, res) => {
   Quotes.update(
     {
@@ -153,12 +153,14 @@ router.get('/:category_id', (req, res) => {
 
 
 
-// GET quotes by Author  ---- UNFINISHED NOT TO IMPLEMENT YET
-router.get('/author/:author_name', (req, res) => {
+// GET quotes by keyword  ---- UNFINISHED NOT TO IMPLEMENT YET
+router.get('/word', (req, res) => {
+  let word = req.params.word
   Quotes.findAll({
     attributes: { exclude: ['updatedAt'] },
     where: {
-      author: req.params.author_name
+      // descrption: req.params.word,
+      description: sequelize.literal(Keyword = 'deeply'),
     }
   })
     .then(quoteData => {
@@ -176,7 +178,7 @@ router.get('/author/:author_name', (req, res) => {
 
 
 
-// POST /api/quotes
+// POST a Quote
 router.post('/', (req, res) => {
   // expects { description: "text", created_by: "Adrian", category_id: 1}
   Quotes.create({
