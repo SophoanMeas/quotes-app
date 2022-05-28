@@ -1,10 +1,19 @@
 const router = require('express').Router();
-const { Quotes } = require('../../models');
+const { Quotes, User, Category, Like } = require('../../models');
+const sequelize = require('../../config/connection')
 
 // GET ALL quotes /api/quotes
 router.get('/', (req, res) => {
   // Access our User model and run .findAll() method)
-  Quotes.findAll()
+  Quotes.findAll({
+    attributes: { exclude: ['updatedAt'] },
+    include: [
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
+  })
     .then(quoteData => res.json(quoteData))
     .catch(err => {
       console.log(err);
@@ -13,12 +22,50 @@ router.get('/', (req, res) => {
 });
 
 
-// GET /api/quotes/category-id
-router.get('/:id', (req, res) => {
-  Quotes.findOne({
+// UPDATE - LIKE a quote
+router.put('/like', (req, res) => {
+  Like.create({
+    user_id: req.body.user_id,
+    quote_id: req.body.quote_id
+  })
+  // .then(() => {
+  //   return Quotes.findOne({
+  //     where: {
+  //       id: req.body.quote_id
+  //     },
+  //     attributes: [
+  //       'id',
+  //       'description'
+  //       // use raw MySQL aggregate function query to get a count of how many likes
+  //       [
+  //         sequelize.literal('(SELECT COUNT(*) FROM like WHERE quotes.id = like.quote_id)'),
+  //         'likes'
+  //       ]  
+  //     ]
+  //   })
+  // })
+    .then(quoteData => res.json(quoteData))
+    .catch(err => {
+      console.log(err);
+      res.status(400).json(err);
+    });
+});
+
+
+
+// GET quotes by category_id
+router.get('/:category_id', (req, res) => {
+  Quotes.findAll({
+    attributes: { exclude: ['updatedAt'] },
     where: {
-      id: req.params.category_id
-    }
+      category_id: req.params.category_id
+    },
+    include: [
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
   })
     .then(quoteData => {
       if (!quoteData) {
@@ -34,14 +81,44 @@ router.get('/:id', (req, res) => {
 });
 
 
+// GET quotes by Author
+router.get('/author/:author_name', (req, res) => {
+  Quotes.findAll({
+    attributes: { exclude: ['updatedAt'] },
+    where: {
+      author: req.params.author_name
+    },
+    include: [
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
+  })
+    .then(quoteData => {
+      if (!quoteData) {
+        res.status(404).json({ message: 'No Quotes Found' });
+        return;
+      }
+      res.json(quoteData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+
+
 // POST /api/quotes
 router.post('/', (req, res) => {
   // expects { description: "text", created_by: "Adrian", category_id: 1}
   Quotes.create({
-    description: req.body.description 
+    description: req.body.description, 
+    author: req.body.author, 
     // likes: req.body.likes, 
-    // created_by: req.body.created_by,
-    // category_id: req.body.category_id, 
+    user_id: req.body.user_id,
+    category_id: req.body.category_id, 
   })
     .then(quoteData => res.json(quoteData))
     .catch(err => {
@@ -50,7 +127,6 @@ router.post('/', (req, res) => {
     });
 });
 
-// UPDATE .... upcoming update
 
 // DELETE ... upcoming update
 

@@ -34,21 +34,21 @@ const quotesData = [
 		description:'I slept and dreamt that life was joy. I awoke and saw that life was service. I acted and behold, service was joy.',
         author: 'Rabindranath Tagore',
         likes: 20,
-        posted_by: 3,
+        user_id: 3,
         category_id: 3, 
 	},
     {
 		description:'Religion is the organization of spirituality into something that became the hand maiden of conquerors. Nearly all religions were brought to people and imposed on people by conquerors, and used as the framework to control their minds.',
         author: 'John Henrik Clarke',
         likes: 50,
-        posted_by: 3,
+        user_id: 3,
         category_id: 4,
 	},
     {
 		description:'So I say to you, Ask and it will be given to you; search, and you will find; knock, and the door will be opened for you.',
         author: 'Jesus Christ',
         likes: 50,
-        created_by_id: 2,
+        user_id: 2,
         category_id: 4
 	},
 

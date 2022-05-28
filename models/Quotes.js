@@ -18,14 +18,16 @@ Quotes.init(
 				len: [ 2 ]
 			}
 		},
-        author:{
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                isAlpha: true,
-                len: [2]
-            }
-        },
+
+		author:{
+			type: DataTypes.STRING,
+			allowNull: false,
+			validate: {
+					isAlpha: true,
+					len: [2]
+			}
+	},
+
 		likes: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
@@ -33,11 +35,21 @@ Quotes.init(
 		},
 		user_id: {
 			type: DataTypes.INTEGER,
-            field: 'posted_by',
-			references:{
-                model: 'user',
-                key: 'id'
-            }
+			allowNull: false,
+			field: 'posted_by',
+			references: {
+				model: 'user',
+				key: 'id'
+			}
+
+					// CHANGE FORM MERGING CAN BE ERASED
+		// user_id: {
+		// 	type: DataTypes.INTEGER,
+    //         field: 'created_by_id',
+		// 	references:{
+    //             model: 'user',
+    //             key: 'id'
+    //         }
 		},
 		category_id: {
 			type: DataTypes.INTEGER,
