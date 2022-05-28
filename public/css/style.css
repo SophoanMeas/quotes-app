@@ -1,5 +1,9 @@
 /* Global Styles */
-
+h2 {
+  color: white;
+  text-align: center;
+  text-shadow: 1px 1px 2px black;;
+}
 .center_div{
   margin: 0 auto;
   width:80% 
@@ -7,8 +11,23 @@
 /* End of Global Styles */
 
 /* Header Styles */
-input.form-control {
-  width: 300px!important;
+
+
+.hero {
+  background-image: url(../images/QuoteSmith-Hero-BG.jpg);
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+.hero .container {
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+
+.card {
+  display: block !important;
+  width: 20rem !important;
+  /* flex:none !important; */
 }
 
 /* End of Header Styles */
