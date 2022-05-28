@@ -42,15 +42,6 @@ Quotes.init(
 				model: 'user',
 				key: 'id'
 			}
-
-					// CHANGE FORM MERGING CAN BE ERASED
-		// user_id: {
-		// 	type: DataTypes.INTEGER,
-    //         field: 'created_by_id',
-		// 	references:{
-    //             model: 'user',
-    //             key: 'id'
-    //         }
 		},
 		category_id: {
 			type: DataTypes.INTEGER,
@@ -58,7 +49,12 @@ Quotes.init(
 				model: 'category',
 				key: 'id'
 			}
-		}
+		},
+		is_liked: {
+			type: DataTypes.BOOLEAN,
+			allowNull: false,
+			defaultValue: 0
+			}
 	},
 	{
 		sequelize,
