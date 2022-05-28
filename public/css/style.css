@@ -7,8 +7,8 @@
 /* End of Global Styles */
 
 /* Header Styles */
-.logo {
-  
+input.form-control {
+  width: 300px!important;
 }
 
 /* End of Header Styles */
