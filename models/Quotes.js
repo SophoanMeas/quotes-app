@@ -33,7 +33,7 @@ Quotes.init(
 		},
 		user_id: {
 			type: DataTypes.INTEGER,
-            field: 'created_by_id',
+            field: 'posted_by',
 			references:{
                 model: 'user',
                 key: 'id'
