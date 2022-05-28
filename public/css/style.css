@@ -1,5 +1,5 @@
 /* Global Styles */
-h2 {
+.hero h2 {
   color: white;
   text-align: center;
   text-shadow: 1px 1px 2px black;;
@@ -26,8 +26,12 @@ h2 {
 
 .card {
   display: block !important;
-  width: 20rem !important;
-  /* flex:none !important; */
+  width: 25rem !important;
+}
+
+.card-header {
+  background-color: rgb(2, 135, 140);
+  color: white;
 }
 
 /* End of Header Styles */
