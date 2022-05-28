@@ -34,21 +34,21 @@ Quotes.belongsToMany(User, {
   foreignKey: 'quote_id'
 })
 
-Like.belongsTo(User, {
-  foreignKey: 'user_id'
-});
+// Like.belongsTo(User, {
+//   foreignKey: 'user_id'
+// });
 
 Like.belongsTo(Quotes, {
   foreignKey: 'quote_id'
 });
 
-User.hasMany(Like, {
-  foreignKey: 'user_id'
-});
+// User.hasMany(Like, {
+//   foreignKey: 'user_id'
+// });
 
-Quotes.hasMany(Like, {
-  foreignKey: 'quote_id'
-});
+// Quotes.hasMany(Like, {
+//   foreignKey: 'quote_id'
+// });
 
 
 module.exports = { Quotes, User, Category, Like };

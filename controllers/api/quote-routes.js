@@ -117,7 +117,7 @@ router.post('/', (req, res) => {
     description: req.body.description, 
     author: req.body.author, 
     // likes: req.body.likes, 
-    posted_by: req.body.posted_by,
+    user_id: req.body.user_id,
     category_id: req.body.category_id, 
   })
     .then(quoteData => res.json(quoteData))
