@@ -19,7 +19,7 @@ Quotes.init(
 			}
 		},
 
-		author:{
+		author:{ 
 			type: DataTypes.STRING,
 			allowNull: false,
 			validate: {

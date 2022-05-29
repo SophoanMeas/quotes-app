@@ -1,41 +1,11 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
-// Login
-router.post('/login', async(req, res) =>{
-  try {
-    const userData = await User.findOne({
-      where:{
-        username: req.body.username
-      }
-    })
-    if (!userData){
-      res.status(400).json({ message: 'Wrong username/password. Try again!'})
-      return;
-    }
-    const password = await userData.checkPassword(req.body.password)
-    if (!password){
-      req.session.loggedIn = true;
-      res.status(200).json({ user: userData, message: 'Your are logged in'})
-    }
-  }catch(err){
-    console.log(err)
-    res.status(500).json(err)
-  }
+
+// GET a user
+router.get('/', async (req, res) =>{
+
 })
-
-// Logout
-router.post('/logout', async(req, res)=>{
-  if (req.session.loggedIn){
-    req.session.destroy(()=>{
-      res.status(204).end()
-    })
-  }else{
-    res.status(404).end();
-  }
-})
-
-
 // CREATE new user
 router.post('/', async (req, res) => {
 	try {
@@ -56,6 +26,57 @@ router.post('/', async (req, res) => {
 		res.status(500).json(err);
 	}
 });
+
+// Login
+router.post('/login', async (req, res) => {
+	try {
+		const userData = await User.findOne({
+			where: {
+				username: req.body.username
+			},
+      include: [
+        {
+          mode: User,
+          attributes:[
+            'id',
+            'username',
+            'first_name',
+            'last_name'
+          ]
+        }
+      ]
+		});
+		if (!userData) {
+			res.status(400).json({ message: 'Wrong username/password. Try again!' });
+			return;
+		}
+		const password = await userData.checkPassword(req.body.password);
+		if (!password) {
+			req.session.loggedIn = true;
+			res.status(200).json({ user: userData, message: 'Your are logged in' });
+      const user = userData.get({ plain: true});
+      res.render.json(user)
+
+
+
+		}
+	} catch (err) {
+		console.log(err);
+		res.status(500).json(err);
+	}
+});
+
+// Logout
+router.post('/logout', async (req, res) => {
+	if (req.session.loggedIn) {
+		req.session.destroy(() => {
+			res.status(204).end();
+		});
+	} else {
+		res.status(404).end();
+	}
+});
+
 
 
 module.exports = router;
