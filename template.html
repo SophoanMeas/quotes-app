@@ -31,7 +31,7 @@
         <div class="input-group mb-3">
           <input type="text" class="form-control" placeholder="Search quotes" aria-label="Search quotes" aria-describedby="basic-addon2">
           <div class="input-group-append">
-            <button class="btn btn-outline-primary" type="button">Search</button>
+            <button id="search-btn" class="btn btn-outline-primary" type="button">Search</button>
           </div>
         </div>
         
@@ -54,10 +54,17 @@
 
       <!-- Login/Signup section -->
           <div class="col-3">
-            <span class="inline-block">
-              <i class="fa-solid fa-circle-user fa-2x align-middle"></i> 
-              <button type="button" id="loginBtn" class="btn btn-outline-primary">Login</button> 
-              <button type="button" id="signUpBtn" class="btn btn-outline-primary">Sign Up</button>
+            <span class="row g-2">
+              <i class="fa-solid fa-circle-user fa-2x align-middle"></i> &nbsp; 
+              <!-- Login -->
+              <div class="text-center">
+                <a href="" class="btn btn-outline-primary" data-toggle="modal" data-target="#loginModal">Login</a>
+              </div>
+              <!-- Sign up -->
+              &nbsp;
+              <div class="text-center">
+                <a href="" class="btn btn-outline-primary" data-toggle="modal" data-target="#signUpModal">Sign Up</a>
+              </div>
             </span>
           </div>
       
@@ -72,7 +79,7 @@
       <!-- HERO START -->
       <section class="hero">
         <div class="container">
-          <div class="row">
+          <div class="row justify-content-center">
         <!-- Quote of the day section -->
           <h2 class="m-3">Quote of the Day</h2>
 
@@ -101,7 +108,7 @@
         
         <div class="container">
 
-          <h2 class="mt-5 text-center">Categories</h2>
+          <h2 class="mt-4 text-center">Categories</h2>
 
           <div class="text-center">
             <div class="btn-group bg-white" role="group" aria-label="Quote Categories">
@@ -115,7 +122,7 @@
         </div>
         <!-- Results section -->
         <div class="container">
-          <h2 class="m-3 text-center">Results</h2>
+          <h2 class="mt-4 text-center">Results</h2>
           <div class="row g-3 mb-5">
 
             <!-- Quote example 1 -->
@@ -160,7 +167,7 @@
             <div class="col-12 col-md-6 col-lg-4 mb-3">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-header mb-1 text-center">Category</h5>
+                  <h5 class="card-header bg-color-primary mb-1 text-center">Category</h5>
                   <p class="card-text text-center mt-2">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                   <h6 class="text-center">- Aristotle</h6>
                     <p class="text-center">posted by <a href="#" class="card-link">User name</a></p>
@@ -179,15 +186,65 @@
     <!-- MAIN END -->
 
     <!--LOGIN Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Login</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-3">
+          <input type="email" id="defaultForm-email" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
+        </div>
 
+        <div class="md-form mb-2">
+          <input type="password" id="defaultForm-pass" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
+        </div>
 
-
-
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+        <button class="btn btn-primary">Login</button>
+        </div>
+        </div>
+      </div>
+    </div>
     <!-- END of LOGIN Modal-->
 
     <!-- SIGNUP Modal -->
+    <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Sign Up</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-3">
+          <input type="email" id="defaultForm-email" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
+        </div>
 
+        <div class="md-form mb-2">
+          <input type="password" id="defaultForm-pass" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
+        </div>
 
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+        <button class="btn btn-primary">Sign Up</button>
+        </div>
+        </div>
+      </div>
+    </div>
     <!-- END of SIGNUP Modal-->
 
     <!-- POST A QUOTE Modal -->

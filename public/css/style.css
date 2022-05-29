@@ -32,6 +32,14 @@
   color: white;
 }
 
+.modal-header {
+  background-color: #102e54;
+  color: white;
+}
+
+.modal-content {
+  background-color: #e7f2fd;
+}
 /* End of Header Styles */
 
 /* Main Styles */
