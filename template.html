@@ -27,11 +27,14 @@
         </a>
 
       <!-- Search bar and radio buttons -->
-      <div class="col-4 ">
-          <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
-          </form>
+      <div class="col-3 ">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Search quotes" aria-label="Search quotes" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <button class="btn btn-outline-primary" type="button">Search</button>
+          </div>
+        </div>
+        
 
         <!-- radio buttons -->
           <div class="form-check form-check-inline">
@@ -46,14 +49,16 @@
 
       <!-- Add a quote button -->
           <div class="col-2">
-            <button type="button" class="btn btn-lg btn-dark">Add a quote</button>
+            <button type="button" id="addQuoteBtn" class="btn btn-lg btn-dark">Add a quote</button>
           </div>
 
       <!-- Login/Signup section -->
-          <div class="col-2">
-            <i class="fa-solid fa-circle-user fa-2x align-middle"></i> 
-            <a href="#"> Login </a>  |
-            <a href="#"> Sign Up</a>
+          <div class="col-3">
+            <span class="inline-block">
+              <i class="fa-solid fa-circle-user fa-2x align-middle"></i> 
+              <button type="button" id="loginBtn" class="btn btn-outline-primary">Login</button> 
+              <button type="button" id="signUpBtn" class="btn btn-outline-primary">Sign Up</button>
+            </span>
           </div>
       
       <!-- END of Content Container -->
@@ -106,7 +111,7 @@
               <button type="button" class="btn btn-outline-primary btn-lg">Spirituality</button>
             </div>
           </div>
-          
+
         </div>
         <!-- Results section -->
         <div class="container">
@@ -172,6 +177,23 @@
       
     </main>
     <!-- MAIN END -->
+
+    <!--LOGIN Modal -->
+
+
+
+
+    <!-- END of LOGIN Modal-->
+
+    <!-- SIGNUP Modal -->
+
+
+    <!-- END of SIGNUP Modal-->
+
+    <!-- POST A QUOTE Modal -->
+
+
+    <!-- END of POST A QUOTE Modal -->
 
     <!-- FOOTER START -->
     <footer class="page-footer">
