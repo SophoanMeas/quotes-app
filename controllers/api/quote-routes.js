@@ -76,7 +76,7 @@ router.get('/day', (req, res) => {
 //     });
 // });
 
-// GET quotes by keyword  ---- UNFINISHED NOT TO IMPLEMENT YET
+// GET quotes by keyword 
 router.get('/word', (req, res) => {
   Quotes.findAll({
     where: {
@@ -84,6 +84,31 @@ router.get('/word', (req, res) => {
         {
             [Op.like]: 
             `%${req.body.description}%`
+          }
+    }
+})
+    .then(quoteData => {
+      if (!quoteData) {
+        res.status(404).json({ message: 'No Quotes Found' });
+        return;
+      }
+      res.json(quoteData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+
+// GET quotes by AUTHOR  
+router.get('/author', (req, res) => {
+  Quotes.findAll({
+    where: {
+        author: 
+        {
+            [Op.like]: 
+            `%${req.body.author}%`
           }
     }
 })
@@ -129,7 +154,8 @@ router.get('/favourites', (req, res) => {
 router.put('/:id', (req, res) => {
   Quotes.update(
     {
-      likes: sequelize.literal('likes + 1')
+      likes: sequelize.literal('likes + 1'),
+      is_liked: 1
     },
     {
       where: {
