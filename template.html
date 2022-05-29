@@ -20,91 +20,121 @@
       <!-- Content container -->
       
       <nav class="navbar navbar-light bg-light">
-      <div class="container">
-
+        <div class="container">
       <!-- QuoteSmith logo -->
-        <a href="#" class="col-3 navbar-brand">
-          <img class="logo img-fluid d-inline-block mb-0" src="./public/images/QuoteSmith-Horizontal.png" alt="QuoteSmith Logo">
+        <a href="#" class="col-lg-3 col-sm-12 navbar-brand">
+          <img class="mw-100 img-fluid d-inline-block mb-0" src="./public/images/QuoteSmith-Horizontal.png" alt="QuoteSmith Logo">
         </a>
 
       <!-- Search bar and radio buttons -->
-      <div class="col-4">
-        <form class="form-inline">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
-        </form>
+      <div class="col-4 ">
+          <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+          </form>
 
         <!-- radio buttons -->
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-          <label class="form-check-label" for="inlineRadio1">by Author</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-          <label class="form-check-label" for="inlineRadio2">by Keyword</label>
-        </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+            <label class="form-check-label" for="inlineRadio1">by Author</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+            <label class="form-check-label" for="inlineRadio2">by Keyword</label>
+          </div>
         </div> 
 
       <!-- Add a quote button -->
-        <div class="col-2">
-          <button type="button" class="btn btn-dark">Add a quote</button>
-        </div>
+          <div class="col-2">
+            <button type="button" class="btn btn-dark">Add a quote</button>
+          </div>
 
       <!-- Login/Signup section -->
-        <div class="col-2">
+          <div class="col-2">
             <i class="fa-solid fa-circle-user fa-2x align-middle"></i> 
             <a href="#"> Login </a>  |
             <a href="#"> Sign Up</a>
-        </div>
+          </div>
       
       <!-- END of Content Container -->
-      </div>
+        </div>  
       </nav>
     </header>
     <!-- HEADER end -->
     
     <!-- MAIN START -->
-    <main class="row ">
+    <main>
       <!-- HERO START -->
-      <section class="hero col-12">
+      <section class="hero">
         <div class="container">
+          <div class="row">
         <!-- Quote of the day section -->
-          <h2 class="mt-5">Quote of the Day</h2>
+          <h2 class="m-3">Quote of the Day</h2>
 
-        <div class="mt-3 mb-5">
-          
-          <div class="card" style="width: 40%;">
-            <div class="card-header text-center">
-              Category
+          <div class="col-12 mt-3 mb-5">
+            <div class="card">
+              <div class="card-header text-center">
+                Category
+              </div>
+                <div class="card-body">
+                  <blockquote class="blockquote mb-0">
+                    <p>A well-known quote, contained in a blockquote element.</p>
+                    <footer class="blockquote-footer">Someone famous in   <cite title="Source Title">Source Title</cite>
+                    </footer>
+                  </blockquote>
+                </div>
+              </div>
             </div>
-            <div class="card-body">
-              <blockquote class="blockquote mb-0">
-                <p>A well-known quote, contained in a blockquote element.</p>
-                <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-              </blockquote>
-            </div>
-          </div>
 
         </div>  
       </section>
       <!-- HERO END -->
 
       <!-- RESULTS START -->
-      <section class="results container">
+      <section class="categories">
         <!-- Categories section -->
-        <h2 class="mt-5 text-center">Categories</h2>
-        <div class="row">
+        <div class="container">  
+          <h2 class="mt-5 text-center">Categories</h2>
+          <div class="row">
           
           
           
+          </div>
         </div>
         <!-- Results section -->
         <div class="container">
-          <h2 class="mt-5 text-center">Results</h2>
-          <div class="card-holder row">
+          <h2 class="m-3 text-center">Results</h2>
+          <div class="row g-3 mb-5">
 
             <!-- Quote example 1 -->
-            <div class="card col-lg-4 m-2 shadow p-3 mb-4 bg-white rounded" style="width: 18rem;">
+            <div class="col-12 col-md-6 col-lg-4 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-header mb-1 text-center">Category</h5>
+                  <p class="card-text text-center mt-2">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <h6 class="text-center">- Aristotle</h6>
+                    <p class="text-center">posted by <a href="#" class="card-link">User name</a></p>
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quote example 2 -->
+            <div class="col-12 col-md-6 col-lg-4 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-header mb-1 text-center">Category</h5>
+                  <p class="card-text text-center mt-2">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <h6 class="text-center">- Aristotle</h6>
+                    <p class="text-center">posted by <a href="#" class="card-link">User name</a></p>
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+              </div>
+            </div>
+
+          <!-- Quote example 3 -->
+          <div class="col-12 col-md-6 col-lg-4 mb-3">
+            <div class="card">
               <div class="card-body">
                 <h5 class="card-header mb-1 text-center">Category</h5>
                 <p class="card-text text-center mt-2">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -113,43 +143,22 @@
                   <i class="fa-regular fa-heart"></i>
               </div>
             </div>
-
-            <!-- Quote example 2 -->
-          <div class="card col-lg-4 m-2 shadow p-3 mb-4 bg-white rounded" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-header mb-1 text-center">Category</h5>
-              <p class="card-text text-center mt-2">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <h6 class="text-center">- Aristotle</h6>
-                <p class="text-center">posted by <a href="#" class="card-link">User name</a></p>
-                <i class="fa-regular fa-heart"></i>
-            </div>
-          </div>
-
-          <!-- Quote example 3 -->
-          <div class="card col-lg-4 m-2 shadow p-3 mb-4 bg-white rounded" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-header mb-1 text-center">Category</h5>
-              <p class="card-text text-center mt-2">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <h6 class="text-center">- Aristotle</h6>
-                <p class="text-center">posted by <a href="#" class="card-link">User name</a></p>
-                <i class="fa-regular fa-heart"></i>
-            </div>
           </div>
             <!-- Quote example 4 -->
-          <div class="card col-lg-4 m-2 shadow p-3 mb-4 bg-white rounded" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-header mb-1 text-center">Category</h5>
-              <p class="card-text text-center mt-2">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <h6 class="text-center">- Aristotle</h6>
-                <p class="text-center">posted by <a href="#" class="card-link">User name</a></p>
-                <i class="fa-regular fa-heart"></i>
+            <div class="col-12 col-md-6 col-lg-4 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-header mb-1 text-center">Category</h5>
+                  <p class="card-text text-center mt-2">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <h6 class="text-center">- Aristotle</h6>
+                    <p class="text-center">posted by <a href="#" class="card-link">User name</a></p>
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+              </div>
             </div>
-          </div>
-
           
-
-          </div>
           <!-- end of card-holder -->
+          </div>
         </div>
       </section>
       <!-- RESULTS END -->
@@ -158,8 +167,10 @@
     <!-- MAIN END -->
 
     <!-- FOOTER START -->
-    <footer class="page-footer special-color-dark">
-      
+    <footer class="page-footer">
+      <p class="text-center">
+        <b>QuoteSmith</b> is made with love by <a href="https://github.com/isaiasqb" target="_blank">Adrian</a>, <a href="https://github.com/camkaras" target="_blank">Cameron</a>, <a href="https://github.com/SophoanMeas" target="_blank">Pon</a> and <a href="https://github.com/narcpat" target="_blank">Patrick</a>.
+      </p>
     </footer>
     <!-- FOOTER END -->
     <!-- Optional JavaScript -->

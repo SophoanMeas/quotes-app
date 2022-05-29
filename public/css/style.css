@@ -1,13 +1,21 @@
 /* Global Styles */
 .hero h2 {
   color: white;
-  text-align: center;
+  text-align: center !important;
   text-shadow: 1px 1px 2px black;;
 }
-.center_div{
-  margin: 0 auto;
-  width:80% 
+
+/* .btn-primary {
+  background-color: #378a98;
 }
+
+.btn-primary:hover {
+  background-color: #216d87;
+}
+
+.btn-primary:active, .btn-primary:after {
+  background-color: #378a98;
+} */
 /* End of Global Styles */
 
 /* Header Styles */
@@ -18,15 +26,15 @@
   background-size: cover !important;
   background-position: center !important;
 }
-.card {
-  display: block !important;
-  width: 20rem !important;
-}
 
 .card-header {
-  background-color: rgb(2, 135, 140);
+  background-color: #102e54;
   color: white;
 }
 
 /* End of Header Styles */
 
+/* Main Styles */
+main {
+  background-color: #e7f2fd;
+}
