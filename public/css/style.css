@@ -18,15 +18,9 @@
   background-size: cover !important;
   background-position: center !important;
 }
-
-.hero .container {
-  flex-direction: column !important;
-  justify-content: center !important;
-}
-
 .card {
   display: block !important;
-  width: 25rem !important;
+  width: 20rem !important;
 }
 
 .card-header {
