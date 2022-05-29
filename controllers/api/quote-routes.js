@@ -1,8 +1,12 @@
 const router = require('express').Router();
 const { Quotes, User, Category, Like } = require('../../models');
-const sequelize = require('../../config/connection')
+const sequelize = require('../../config/connection');
+const Sequelize = require("sequelize");
+const Op = Sequelize.Op;
 
-// GET ALL quotes /api/quotes
+
+
+// GET ALL quotes /api/quotes  - (Purely for testing purposes)
 router.get('/', (req, res) => {
   // Access our User model and run .findAll() method)
   Quotes.findAll({
@@ -26,7 +30,7 @@ router.get('/', (req, res) => {
 });
 
 
-//GET 2 Random Quotes form the general pool
+//GET Random Quote form the general pool
 router.get('/day', (req, res) => {
   // Access our User model and run .findAll() method)
   Quotes.findAll({
@@ -72,6 +76,29 @@ router.get('/day', (req, res) => {
 //     });
 // });
 
+// GET quotes by keyword  ---- UNFINISHED NOT TO IMPLEMENT YET
+router.get('/word', (req, res) => {
+  Quotes.findAll({
+    where: {
+        description: 
+        {
+            [Op.like]: 
+            `%${req.body.description}%`
+          }
+    }
+})
+    .then(quoteData => {
+      if (!quoteData) {
+        res.status(404).json({ message: 'No Quotes Found' });
+        return;
+      }
+      res.json(quoteData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 
 
@@ -98,7 +125,7 @@ router.get('/favourites', (req, res) => {
 
 
 
-// UPDATE the NUMBEr of LIKES (inclrease the general count)
+// PUT - INCREASE the NUMBEr of LIKES (inclrease the general count)
 router.put('/:id', (req, res) => {
   Quotes.update(
     {
@@ -153,28 +180,6 @@ router.get('/:category_id', (req, res) => {
 
 
 
-// GET quotes by keyword  ---- UNFINISHED NOT TO IMPLEMENT YET
-router.get('/word', (req, res) => {
-  let word = req.params.word
-  Quotes.findAll({
-    attributes: { exclude: ['updatedAt'] },
-    where: {
-      // descrption: req.params.word,
-      description: sequelize.literal(Keyword = 'deeply'),
-    }
-  })
-    .then(quoteData => {
-      if (!quoteData) {
-        res.status(404).json({ message: 'No Quotes Found' });
-        return;
-      }
-      res.json(quoteData);
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
 
 
 
