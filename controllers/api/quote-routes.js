@@ -17,7 +17,11 @@ router.get('/', (req, res) => {
         model: Category,
         attributes: ['category_name']
       },
-    ]
+    ],
+    order: [
+      ['is_liked', 'DESC'],
+      ['created_at', 'DESC'],
+  ],
   })
     .then(quoteData => res.json(quoteData))
     .catch(err => {
@@ -69,7 +73,11 @@ router.get('/word', (req, res) => {
         model: Category,
         attributes: ['category_name']
       },
-    ]
+    ],
+    order: [
+      ['is_liked', 'DESC'],
+      ['created_at', 'DESC'],
+  ],
 })
     .then(quoteData => {
       if (!quoteData) {
@@ -103,7 +111,11 @@ router.get('/author', (req, res) => {
         model: Category,
         attributes: ['category_name']
       },
-    ]
+    ],
+    order: [
+      ['is_liked', 'DESC'],
+      ['created_at', 'DESC'],
+  ],
 })
     .then(quoteData => {
       if (!quoteData) {
@@ -124,18 +136,34 @@ router.put('/like', (req, res) => {
     user_id: req.body.user_id,
     quote_id: req.body.quote_id
   })
+
+  // .then( Quotes.update(
+  //   {
+  //     likes: sequelize.literal('likes + 1'),
+  //     is_liked: 1
+  //   },
+  //   {
+  //     where: {
+  //       id: req.body.id
+  //     }
+  //   }))
+
   .then(() => {
-    // find the Quote that was liked
     return Quotes.findOne({
       where: {
         id: req.body.quote_id
       },
       attributes: [
         'id',
-        'description'
+        'description',
+        'category_id'
         // use raw MySQL aggregate function query to get a count of how many likes
-        // [sequelize.literal('(SELECT COUNT(*) FROM liked WHERE quote_id = liked.quote_id)'), 'likes_count']  
-      ]
+      // [sequelize.literal('(SELECT COUNT(*) FROM liked WHERE req.body.quote_id = liked.quote_id)'), 'likes_count']  
+      ],
+      include:       {
+        model: Category,
+        attributes: ['category_name']
+      },
     })
   })
     .then(quoteData => res.json(quoteData))
@@ -168,11 +196,11 @@ router.put('/like', (req, res) => {
 
 
 
-// PUT - INCREASE the NUMBEr of LIKES (inclrease the general count)
+// PUT - BOOLEAN LIKES (chnage the si_liked status)
 router.put('/:id', (req, res) => {
   Quotes.update(
     {
-      likes: sequelize.literal('likes + 1'),
+      // likes: sequelize.literal('likes + 1'),
       is_liked: 1
     },
     {
@@ -212,7 +240,11 @@ router.get('/:category_id', (req, res) => {
         model: Category,
         attributes: ['category_name']
       },
-    ]
+    ],
+    order: [
+      ['is_liked', 'DESC'],
+      ['created_at', 'DESC'],
+  ],
   })
     .then(quoteData => {
       if (!quoteData) {

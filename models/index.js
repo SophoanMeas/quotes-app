@@ -53,4 +53,4 @@ User.hasMany(Liked, {
 
 
 
-module.exports = { Quotes, User, Category };
+module.exports = { Quotes, User, Category, Liked };
