@@ -1,6 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-// const { User, Category } = require('../models');
 
 class Quotes extends Model {}
 
@@ -20,7 +19,7 @@ Quotes.init(
 			}
 		},
 
-		author:{
+		author:{ 
 			type: DataTypes.STRING,
 			allowNull: false,
 			validate: {
