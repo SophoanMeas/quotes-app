@@ -16,7 +16,7 @@ const quotesData = [
 		likes: 120,
 		user_id: 1,
 		category_id: 2,
-		is_liked: 1
+		is_liked: 0
 	},
 	{
 		description: 'I put my heard and my soul into my work, and have lost my mind in the process',
@@ -33,7 +33,7 @@ const quotesData = [
 		likes: 200,
 		user_id: 2,
 		category_id: 3,
-		is_liked: 1
+		is_liked: 0
 	},
 	{
 		description:
@@ -42,7 +42,7 @@ const quotesData = [
 		likes: 20,
 		user_id: 3,
 		category_id: 3,
-		is_liked: 1
+		is_liked: 0
 	},
 	{
 		description:
@@ -60,8 +60,53 @@ const quotesData = [
 		likes: 50,
 		user_id: 2,
 		category_id: 4,
-		is_liked: 1
-	}
+		is_liked: 0
+	},
+	{
+		description:
+			'Be yourself; everyone else is already taken.',
+		author: 'Oscar Wilde',
+		likes: 0,
+		user_id: 3,
+		category_id: 3,
+		is_liked: 0
+	},
+	{
+		description:
+			"Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.",
+		author: 'Einstein',
+		likes: 0,
+		user_id: 2,
+		category_id: 3,
+		is_liked: 0
+	},
+	{
+		description:
+			'A friend is someone who knows all about you and still loves you.',
+		author: 'Elbert Hubbard',
+		likes: 0,
+		user_id: 1,
+		category_id: 2,
+		is_liked: 0
+	},
+	{
+		description:
+		'Make your own Bible. Select and collect all the words and sentences that in all your readings have been to you like the blast of a trumpet.',
+		author: 'Ralph Waldo Emerson',
+		likes: 0,
+		user_id: 1,
+		category_id: 4,
+		is_liked: 0
+	},
+	{
+		description:
+		'You can safely assume you have created God in your own image when it turns out that God hates all the same people you do.',
+		author: 'Anne Lamott',
+		likes: 0,
+		user_id: 1,
+		category_id: 4,
+		is_liked: 0
+	},
 ];
 
 const seedQuotes = () => Quotes.bulkCreate(quotesData);
