@@ -32,6 +32,17 @@
   color: white;
 }
 
+.modal-title {
+  text-align: center !important;
+}
+.modal-header {
+  background-color: #102e54;
+  color: white;
+}
+
+.modal-footer {
+  background-color: #e7f2fd;
+}
 /* End of Header Styles */
 
 /* Main Styles */
