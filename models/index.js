@@ -2,7 +2,7 @@ const User = require('./User');
 const Category = require('./Category');
 const Quotes = require('./Quotes');
 // feature on the works
-// const Like = require('./Like'); 
+const Liked = require('./Liked'); 
 
 // create associations
 User.hasMany(Quotes, {

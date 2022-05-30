@@ -57,7 +57,7 @@ Quotes.init(
 	{
 		sequelize,
 		freezeTableName: true,
-    timestamps: false,
+    timestamps: true,
 		underscored: true,
 		modelName: 'quotes'
 	}

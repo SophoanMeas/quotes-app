@@ -49,12 +49,11 @@ User.init(
                 len: [6]
             }
         },
-    
     },
     {
         hooks: {
             async beforeCreate(newUserData){
-                newUserData.password = await bcrypt(newUserData.password, 10);
+                newUserData.password = await bcrypt.hash(newUserData.password, 10);
                 return newUserData
             }
         },
