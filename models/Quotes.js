@@ -27,8 +27,7 @@ Quotes.init(
 					isAlpha: true,
 					len: [2]
 			}
-	},
-
+		},
 		likes: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
