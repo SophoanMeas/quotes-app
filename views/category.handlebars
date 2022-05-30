@@ -1,80 +1,8 @@
- <!-- Categories section --> 
-      <section class="categories">
-        
-        <div class="container">
-
-          <h2 class="mt-4 text-center">Categories</h2>
-
-          <div class="text-center">
-            <div class="btn-group bg-white" role="group" aria-label="Quote Categories">
-              <button type="button" class="btn btn-outline-primary btn-lg">Work</button>
-              <button type="button" class="btn btn-outline-primary btn-lg">Love</button>
-              <button type="button" class="btn btn-outline-primary btn-lg">Life</button>
-              <button type="button" class="btn btn-outline-primary btn-lg">Spirituality</button>
-            </div>
-          </div>
-
-        </div>
-        <!-- Results section -->
-        <div class="container">
-          <h2 class="mt-4 text-center">Results</h2>
-          <div class="row g-3 mb-5">
-
-          {{!-- RESULT QUOTES CURRENTLY HARD CODED--}}
-          <!-- Quote example 1 -->
-            <div class="col-12 col-md-6 col-lg-4 mb-3">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-header mb-1 text-center">Category</h5>
-                  <p class="card-text text-center mt-2">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <h6 class="text-center">- Aristotle</h6>
-                    <p class="text-center">posted by <a href="#" class="card-link">Username</a></p>
-                    <button type="button" class="btn btn-outline-dark"><i class="fa-regular fa-heart"></i></button>
-                    
-                </div>
-              </div>
-            </div>
-
-            <!-- Quote example 2 -->
-            <div class="col-12 col-md-6 col-lg-4 mb-3">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-header mb-1 text-center">Category</h5>
-                  <p class="card-text text-center mt-2">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <h6 class="text-center">- Aristotle</h6>
-                    <p class="text-center">posted by <a href="#" class="card-link">Username</a></p>
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-              </div>
-            </div>
-
-          <!-- Quote example 3 -->
-          <div class="col-12 col-md-6 col-lg-4 mb-3">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-header mb-1 text-center">Category</h5>
-                <p class="card-text text-center mt-2">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <h6 class="text-center">- Aristotle</h6>
-                  <p class="text-center">posted by <a href="#" class="card-link">Username</a></p>
-                  <i class="fa-regular fa-heart"></i>
-              </div>
-            </div>
-          </div>
-            <!-- Quote example 4 -->
-            <div class="col-12 col-md-6 col-lg-4 mb-3">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-header bg-color-primary mb-1 text-center">Category</h5>
-                  <p class="card-text text-center mt-2">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <h6 class="text-center">- Aristotle</h6>
-                    <p class="text-center">posted by <a href="#" class="card-link">Username</a></p>
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-              </div>
-            </div>
-
- <!-- end of card-holder -->
-          </div>
-        </div>
-      </section>
-      <!-- RESULTS END -->
+<section class="container">
+  <h3 class="Quotes">{{quote.description}}</h3>
+  <section class="flex-row justify-center">
+    {{#each description as |quote|}}
+    {{> quote-description}}
+    {{/each}}
+  </section>
+</section>
