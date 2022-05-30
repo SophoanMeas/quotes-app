@@ -256,7 +256,7 @@
     <!-- END of SIGNUP Modal-->
 
     <!-- POST A QUOTE Modal -->
-    <div class="modal fade" id="postQuoteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal fade" id="postQuoteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -268,48 +268,30 @@
           <div class="modal-body">
             <form>
               <div class="form-group">
-                <label for="quoteTitle-name" class="col-form-label">Title:</label>
-                <input type="text" class="form-control" id="newQuoteTitle">
-              </div>
-              <div class="form-group">
                 <label for="newQuote" class="col-form-label">Quote:</label>
                 <textarea class="form-control" id="newQuoteText"></textarea>
               </div>
-              <h5 class="text-center">Categories</h5>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="addToWork">
-                <label class="form-check-label" for="defaultCheck1">
-                  Work
-                </label>
+              <div class="form-group">
+                <label for="quoteTitle-name" class="col-form-label">Author:</label>
+                <input type="text" class="form-control" id="newQuoteTitle">
               </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="addToLove">
-                <label class="form-check-label" for="defaultCheck1">
-                  Love
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="addToLife">
-                <label class="form-check-label" for="defaultCheck1">
-                  Life
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="addToSpirituality">
-                <label class="form-check-label" for="defaultCheck1">
-                  Spirituality
-                </label>
-              </div>
+              <h6>Categories</h6>
+              <select class="form-select" aria-label="Default select example">
+                <option selected>Select Quote Category</option>
+                <option value="1">Work</option>
+                <option value="2">Love</option>
+                <option value="3">Life</option>
+                <option value="3">Spirituality</option>
+              </select>
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
             <button type="button" class="btn btn-primary">Add New Quote</button>
           </div>
         </div>
       </div>
     </div>
-
     <!-- END of POST A QUOTE Modal -->
 
     <!-- FOOTER START -->
