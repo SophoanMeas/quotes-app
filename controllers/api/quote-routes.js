@@ -61,8 +61,6 @@ router.get('/day', (req, res) => {
 });
 
 
-
-
 // // UPDATE - LIKE a quote by USER  --- UPDATE in the WORKS
 router.put('/like', (req, res) => {
   Liked.create({
