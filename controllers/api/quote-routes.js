@@ -1,21 +1,14 @@
-const router = require('express').Router();
-<<<<<<< HEAD
-const { Quotes, User, Category } = require('../../models');
-const sequelize = require('../../config/connection')
-const { Op } = require("sequelize");
 
-// GET ALL quotes /api/quotes  - (Purely for testing purposes)
-=======
-const { Quotes, User, Category, Liked } = require('../../models');
+const router = require('express').Router();
+const { Quotes, User, Category } = require('../../models');
 const sequelize = require('../../config/connection');
 const Sequelize = require("sequelize");
-const Op = Sequelize.Op;
+const op = Sequelize.Op;
 
 // GET ALL quotes - (Purely for testing purposes)
->>>>>>> bc8e5ee3466b282add95fef3443926fd5a3d8b4d
 router.get('/', (req, res) => {
   Quotes.findAll({
-    attributes: ['id', 'description', 'author', 'is_liked', 'created_at'],
+    attributes: ['id', 'description', 'author', 'created_at'],
     include: [
       {
         model: User,
@@ -27,7 +20,6 @@ router.get('/', (req, res) => {
       },
     ],
     order: [
-      ['is_liked', 'DESC'],
       ['created_at', 'DESC'],
   ],
   })
@@ -41,7 +33,7 @@ router.get('/', (req, res) => {
 //GET Random Quote - Quote fo the Day
 router.get('/day', (req, res) => {
   Quotes.findAll({
-    attributes: ['id', 'description', 'author', 'is_liked'],
+    attributes: ['id', 'description', 'author'],
     order: sequelize.literal('rand()'), 
     limit: 1,
     include: [
@@ -65,11 +57,11 @@ router.get('/day', (req, res) => {
 // GET quotes by Keyword 
 router.get('/word', (req, res) => {
   Quotes.findAll({
-    attributes: ['id', 'description', 'author', 'is_liked', 'created_at'],
+    attributes: ['id', 'description', 'author', 'created_at'],
     where: {
         description: 
         {
-          [Op.like]: `%${req.body.description}%`
+          [op.like]: `%${req.body.description}%`
         }
     },
     include: [
@@ -83,7 +75,6 @@ router.get('/word', (req, res) => {
       },
     ],
     order: [
-      ['is_liked', 'DESC'],
       ['created_at', 'DESC'],
   ],
 })
@@ -100,17 +91,14 @@ router.get('/word', (req, res) => {
     });
 });
 
-<<<<<<< HEAD
-// // UPDATE - LIKE a quote by USER  --- UPDATE in the WORKS
-=======
 // GET quotes by Author  
 router.get('/author', (req, res) => {
   Quotes.findAll({
-    attributes: ['id', 'description', 'author', 'is_liked', 'created_at'],
+    attributes: ['id', 'description', 'author', 'created_at'],
     where: {
         author: 
         {
-          [Op.like]: `%${req.body.author}%`
+          [op.like]: `%${req.body.author}%`
         }
     },
     include: [
@@ -124,7 +112,6 @@ router.get('/author', (req, res) => {
       },
     ],
     order: [
-      ['is_liked', 'DESC'],
       ['created_at', 'DESC'],
   ],
 })
@@ -142,7 +129,6 @@ router.get('/author', (req, res) => {
 });
 
 // UPDATE - LIKE a quote by USER Session --- UPDATE in the WORKS
->>>>>>> bc8e5ee3466b282add95fef3443926fd5a3d8b4d
 router.put('/like', (req, res) => {
   Liked.create({
     user_id: req.body.user_id,
@@ -211,10 +197,10 @@ router.put('/like', (req, res) => {
 // PUT - BOOLEAN LIKES (chnage the si_liked status)
 router.put('/:id', (req, res) => {
   Quotes.update(
-    {
-      // likes: sequelize.literal('likes + 1'),
-      is_liked: 1
-    },
+    // {
+    //   // likes: sequelize.literal('likes + 1'),
+    //   is_liked: 1
+    // },
     {
       where: {
         id: req.params.id
@@ -254,7 +240,6 @@ router.get('/:category_id', (req, res) => {
       },
     ],
     order: [
-      ['is_liked', 'DESC'],
       ['created_at', 'DESC'],
   ],
   })

@@ -1,22 +1,4 @@
-{{!-- {{#each quotes as |quote|}}
-{{> quotes-description}}
-{{/each}} --}}
-
-{{!-- ADRIAN CHANGES, "Showing a random single quote of the day" --}}
-{{#each quotes as |single|}}
-  <h2 class="m-3">Quote of the Day</h2>
-  <div class="col-12 mt-3 mb-5">
-
-    <div class="card">
-      <div class="card-header text-center">
-        <h5>{{single.category.category_name}}</h5>
-      </div>
-        <div class="card-body text-center">
-          <blockquote class="blockquote mb-0">
-            <p>{{single.description}}</p>
-            <footer class="blockquote-footer">by <cite title="Source Title">{{single.author}}</cite>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
+<h2 class="m-3">{{title}}</h2>
+{{#each quotes as |quote|}}
+  {{>randomQuote}}
   {{/each}}
