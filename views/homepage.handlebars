@@ -1,3 +1,48 @@
-{{#each quotes as |quote|}}
+{{!-- {{#each quotes as |quote|}}
 {{> quotes-description}}
+{{/each}} --}}
+
+{{!-- ADRIAN CHANGES, TO UNDO: ERASE SECITON and UNCOMMENT PREVIOUS ONES --}}
+<ul class="post-list">
+
+{{#each quotes}}
+
+
+
+  <li>
+
+
+            <div class="col-12 col-md-6 col-lg-4 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-header mb-1 text-center">{{category.category_name}}</h5>
+                  <p class="card-text text-center mt-2">{{description}}</p>
+                  <h6 class="text-center">{{author}}</h6>
+                    <p class="text-center">posted by <a href="#" class="card-link">{{user.username}}</a></p>
+                    <p class="text-center">{{likes}} users have liked this quote</p>
+                    <button type="button" class="btn btn-outline-dark"><i class="fa-regular fa-heart"></i></button>
+                </div>
+              </div>
+            </div>
+
+
+
+{{!-- 
+    <article class="post">
+      <div class="title">
+        <a href="{{post_url}}" target="_blank">{{title}}</a>
+        <span>({{post_url}})</span>
+      </div>
+      <div class="meta">
+        {{vote_count}} point(s) by {{user.username}} on
+        {{created_at}}
+        |
+        <a href="/post/{{id}}">{{comments.length}} comment(s)</a>
+      </div>
+    </article> --}}
+
+  </li>
 {{/each}}
+
+
+</ul>
