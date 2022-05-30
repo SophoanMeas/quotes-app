@@ -26,6 +26,10 @@ router.get('/', async (req, res) => {
 	}
 });
 
+router.get('/', async (req, res, next) =>{
+    res.render('navbar');
+});
+
 router.get('/login', (req, res) => {
 	if (req.session.loggedIn) {
 		res.redirect('/');

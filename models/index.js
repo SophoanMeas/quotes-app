@@ -1,8 +1,6 @@
 const User = require('./User');
 const Category = require('./Category');
 const Quotes = require('./Quotes');
-// feature on the works
-// const Like = require('./Like'); 
 
 // create associations
 User.hasMany(Quotes, {
@@ -18,32 +16,6 @@ Quotes.belongsTo(Category, {
 });
 Category.hasMany(Quotes, {
   foreignKey: 'category_id'
-});
-
-// Associations related to the Like model...in the works
-// User.belongsToMany(Quotes, {
-//   through: Like,
-//   as: 'favourite_quotes',
-//   foreignKey: 'user_id'
-// });
-
-// Quotes.belongsToMany(User, {
-//   through: Like,
-//   as: 'favourite_quotes',
-//   foreignKey: 'quote_id'
-// })
-
-
-// Like.belongsTo(Quotes, {
-//   foreignKey: 'quote_id'
-// });
-
-User.hasMany(Liked, {
-  foreignKey: 'user_id'
-});
-
-Quotes.hasMany(Liked, {
-  foreignKey: 'quote_id'
 });
 
 

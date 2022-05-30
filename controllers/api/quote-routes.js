@@ -1,10 +1,7 @@
 const router = require('express').Router();
-const { Quotes, User, Category, Liked } = require('../../models');
-const sequelize = require('../../config/connection');
-const Sequelize = require("sequelize");
-const Op = Sequelize.Op;
-
-
+const { Quotes, User, Category } = require('../../models');
+const sequelize = require('../../config/connection')
+const { Op } = require("sequelize");
 
 // GET ALL quotes /api/quotes  - (Purely for testing purposes)
 router.get('/', (req, res) => {
