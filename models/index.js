@@ -21,30 +21,36 @@ Category.hasMany(Quotes, {
 });
 
 // Associations related to the Like model...in the works
-// User.belongsToMany(Quotes, {
-//   through: Like,
-//   as: 'favourite_quotes',
-//   foreignKey: 'user_id'
-// });
-
-// Quotes.belongsToMany(User, {
-//   through: Like,
-//   as: 'favourite_quotes',
-//   foreignKey: 'quote_id'
-// })
-
-
-// Like.belongsTo(Quotes, {
-//   foreignKey: 'quote_id'
-// });
-
-User.hasMany(Liked, {
+User.belongsToMany(Quotes, {
+  through: Liked,
+  as: 'favourite_quotes',
   foreignKey: 'user_id'
+});
+
+Quotes.belongsToMany(User, {
+  through: Liked,
+  as: 'favourite_quotes',
+  foreignKey: 'quote_id'
+})
+
+
+Liked.belongsTo(Quotes, {
+  foreignKey: 'quote_id'
 });
 
 Quotes.hasMany(Liked, {
   foreignKey: 'quote_id'
 });
+
+Liked.belongsTo(User, {
+  foreignKey: 'user_id'
+});
+
+User.hasMany(Liked, {
+  foreignKey: 'user_id'
+});
+
+
 
 
 module.exports = { Quotes, User, Category };
