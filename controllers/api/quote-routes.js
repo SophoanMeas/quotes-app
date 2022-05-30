@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Quotes, User, Category, Like } = require('../../models');
+const { Quotes, User, Category, Liked } = require('../../models');
 const sequelize = require('../../config/connection');
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
@@ -10,6 +10,15 @@ const Op = Sequelize.Op;
 router.get('/', (req, res) => {
   // Access our User model and run .findAll() method)
   Quotes.findAll({
+    
+      // where: {
+      //   id: req.params.id
+      // },
+      // attributes: [
+      //   'description',
+      //   [sequelize.literal('(SELECT COUNT(*) FROM liked WHERE quote.id = liked.quote)'), 'likes']
+      // ],
+
     attributes: { exclude: ['updatedAt'] },
     include: [
       {
@@ -30,12 +39,22 @@ router.get('/', (req, res) => {
 });
 
 
-//GET Random Quote form the general pool
+//GET Random Quote from the general pool
 router.get('/day', (req, res) => {
   // Access our User model and run .findAll() method)
   Quotes.findAll({
     order: sequelize.literal('rand()'), 
-    limit: 1
+    limit: 1,
+    include: [
+      {
+        model: User,
+        attributes: ['username']
+      },
+      {
+        model: Category,
+        attributes: ['category_name']
+      },
+    ]
   })
     .then(quoteData => res.json(quoteData))
     .catch(err => {
@@ -47,34 +66,32 @@ router.get('/day', (req, res) => {
 
 
 
-// // UPDATE - LIKE a quote  --- UPDATE in the WORKS
-// router.put('/like', (req, res) => {
-//   Like.create({
-//     user_id: req.body.user_id,
-//     quote_id: req.body.quote_id
-//   })
-//   // .then(() => {
-//   //   return Quotes.findOne({
-//   //     where: {
-//   //       id: req.body.quote_id
-//   //     },
-//   //     attributes: [
-//   //       'id',
-//   //       'description'
-//   //       // use raw MySQL aggregate function query to get a count of how many likes
-//   //       [
-//   //         sequelize.literal('(SELECT COUNT(*) FROM like WHERE quotes.id = like.quote_id)'),
-//   //         'likes'
-//   //       ]  
-//   //     ]
-//   //   })
-//   // })
-//     .then(quoteData => res.json(quoteData))
-//     .catch(err => {
-//       console.log(err);
-//       res.status(400).json(err);
-//     });
-// });
+// // UPDATE - LIKE a quote by USER  --- UPDATE in the WORKS
+router.put('/like', (req, res) => {
+  Liked.create({
+    user_id: req.body.user_id,
+    quote_id: req.body.quote_id
+  })
+  .then(() => {
+    // find the Quote that was liked
+    return Quotes.findOne({
+      where: {
+        id: req.body.quote_id
+      },
+      attributes: [
+        'id',
+        'description'
+        // use raw MySQL aggregate function query to get a count of how many likes
+        // [sequelize.literal('(SELECT COUNT(*) FROM liked WHERE quote_id = liked.quote_id)'), 'likes_count']  
+      ]
+    })
+  })
+    .then(quoteData => res.json(quoteData))
+    .catch(err => {
+      console.log(err);
+      res.status(400).json(err);
+    });
+});
 
 // GET quotes by keyword 
 router.get('/word', (req, res) => {
@@ -85,7 +102,17 @@ router.get('/word', (req, res) => {
             [Op.like]: 
             `%${req.body.description}%`
           }
-    }
+    },
+    include: [
+      {
+        model: User,
+        attributes: ['username']
+      },
+      {
+        model: Category,
+        attributes: ['category_name']
+      },
+    ]
 })
     .then(quoteData => {
       if (!quoteData) {
@@ -110,7 +137,17 @@ router.get('/author', (req, res) => {
             [Op.like]: 
             `%${req.body.author}%`
           }
-    }
+    },
+    include: [
+      {
+        model: User,
+        attributes: ['username']
+      },
+      {
+        model: Category,
+        attributes: ['category_name']
+      },
+    ]
 })
     .then(quoteData => {
       if (!quoteData) {
@@ -127,26 +164,26 @@ router.get('/author', (req, res) => {
 
 
 
-// GET quotes by category_id
-router.get('/favourites', (req, res) => {
-  Quotes.findAll({
-    attributes: { exclude: ['updatedAt'] },
-    where: {
-      is_liked: true
-    }
-  })
-    .then(quoteData => {
-      if (!quoteData) {
-        res.status(404).json({ message: 'No Quotes Found' });
-        return;
-      }
-      res.json(quoteData);
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+// GET quotes that are liked -----IN THE WORKS
+// router.get('/favourites', (req, res) => {
+//   Quotes.findAll({
+//     attributes: { exclude: ['updatedAt'] },
+//     where: {
+//       is_liked: true
+//     }
+//   })
+//     .then(quoteData => {
+//       if (!quoteData) {
+//         res.status(404).json({ message: 'No Quotes Found' });
+//         return;
+//       }
+//       res.json(quoteData);
+//     })
+//     .catch(err => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// });
 
 
 
@@ -188,7 +225,11 @@ router.get('/:category_id', (req, res) => {
       {
         model: User,
         attributes: ['username']
-      }
+      },
+      {
+        model: Category,
+        attributes: ['category_name']
+      },
     ]
   })
     .then(quoteData => {
@@ -203,10 +244,6 @@ router.get('/:category_id', (req, res) => {
       res.status(500).json(err);
     });
 });
-
-
-
-
 
 
 // POST a Quote
@@ -226,8 +263,5 @@ router.post('/', (req, res) => {
       res.status(500).json(err);
     });
 });
-
-
-// DELETE ... upcoming update
 
 module.exports = router;
