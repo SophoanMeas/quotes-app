@@ -1,96 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QuoteSmith</title>
-    <!-- Bootstrap CSS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- CSS stylesheet -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
+     
+  
+    <title>Quote-Smith</title>
 </head>
-
 <body>
-   <!-- HEADER start -->
     <header>
-      <!-- Content container -->
-      
-      <nav class="navbar navbar-light bg-light">
-        <div class="container justify-content-around">
-      <!-- QuoteSmith logo -->
-        <a href="#" class="col-lg-3 col-sm-12 navbar-brand">
-          <img class="mw-100 img-fluid d-inline-block mb-0" src="images/QuoteSmith-Horizontal.png" alt="QuoteSmith Logo">
-        </a>
-
-      <!-- Search bar and radio buttons -->
-      <div class="col-3 ">
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Search quotes" aria-label="Search quotes" aria-describedby="basic-addon2">
-          <div class="input-group-append">
-            <button id="search-btn" class="btn btn-outline-primary" type="button">Search</button>
-          </div>
-        </div>
-        
-
-        <!-- radio buttons -->
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-            <label class="form-check-label" for="inlineRadio1">by Author</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-            <label class="form-check-label" for="inlineRadio2">by Keyword</label>
-          </div>
-        </div> 
-
-      <!-- Add a quote button -->
-          <div class="col-2">
-            <button type="button" id="addQuoteBtn" class="btn btn-lg btn-dark" data-toggle="modal" data-target="#postQuoteModal">Add a quote</button>
-          </div>
-
-      <!-- Login/Signup section -->
-          <div class="col-3">
-            <span class="row g-2">
-              <i class="fa-solid fa-circle-user fa-2x align-middle"></i> &nbsp; 
-              <!-- Login -->
-              <div class="text-center">
-                <a href="" class="btn btn-outline-primary" data-toggle="modal" data-target="#loginModal">Login</a>
-              </div>
-              <!-- Sign up -->
-              &nbsp;
-              <div class="text-center">
-                <a href="" class="btn btn-outline-primary" data-toggle="modal" data-target="#signUpModal">Sign Up</a>
-              </div>
-            </span>
-          </div>
-      
-      <!-- END of Content Container -->
-        </div>  
-      </nav>
+      {{>navbar}}
     </header>
-    <!-- HEADER end -->
-
-
-  {{!-- <nav>
-    <a href="/">Home</a>
-    {{#if loggedIn}}
-    <button id="logout" class="btn-no-style">Logout</button>
-    {{else}}
-    <a href="/login">Login</a>
-    {{/if}}
-  </nav>
-  <main>
-    <div class="quotes">
-      {{{body}}}
-    </div>
-  </main>
-  {{#if loggedIn}}
-  <script src="/public/js/login.js"></script>
-  {{/if}} --}}
-
+    
+{{!-- 
 
 {{{body}}}
 
@@ -106,8 +38,18 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> --}}
 
+    <main>
+      <!-- HERO START -->
+      <section class="hero">
+        <div class="container">
+          <div class="row justify-content-center">
+            {{{body}}}        
+          </div>
+        </div>  
+      </section>
+      <!-- HERO END -->
+      {{>footer}}
 </body>
-
 </html>

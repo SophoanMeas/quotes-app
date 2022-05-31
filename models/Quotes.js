@@ -48,11 +48,6 @@ Quotes.init(
 				key: 'id'
 			}
 		},
-		is_liked: {
-			type: DataTypes.BOOLEAN,
-			allowNull: false,
-			defaultValue: 0
-			}
 	},
 	{
 		sequelize,
