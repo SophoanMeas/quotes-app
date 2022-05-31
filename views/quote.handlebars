@@ -1,8 +1,79 @@
-<section class="container">
+{{!-- <section class="container">
   <h3 class="Quotes">{{quote.description}}</h3>
   <section class="flex-row justify-center">
     {{#each quote.description as |quote|}}
     {{> description}}
     {{/each}}
   </section>
-</section>
+</section> --}}
+
+
+{{!-- EXTRAT for QUOTE Reults --}}
+          <!-- Quote example 1 -->
+
+{{!-- 
+
+
+            <div class="col-12 col-md-6 col-lg-4 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-header mb-1 text-center">Category</h5>
+                  <p class="card-text text-center mt-2">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <h6 class="text-center">- Aristotle</h6>
+                    <p class="text-center">posted by <a href="#" class="card-link">Username</a></p>
+                    <button type="button" class="btn btn-outline-dark"><i class="fa-regular fa-heart"></i></button>
+                    
+                </div>
+              </div>
+            </div>
+
+            <!-- Quote example 2 -->
+            <div class="col-12 col-md-6 col-lg-4 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-header mb-1 text-center">Category</h5>
+                  <p class="card-text text-center mt-2">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <h6 class="text-center">- Aristotle</h6>
+                    <p class="text-center">posted by <a href="#" class="card-link">Username</a></p>
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+              </div>
+            </div>
+
+          <!-- Quote example 3 -->
+          <div class="col-12 col-md-6 col-lg-4 mb-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-header mb-1 text-center">Category</h5>
+                <p class="card-text text-center mt-2">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <h6 class="text-center">- Aristotle</h6>
+                  <p class="text-center">posted by <a href="#" class="card-link">Username</a></p>
+                  <i class="fa-regular fa-heart"></i>
+              </div>
+            </div>
+          </div>
+            <!-- Quote example 4 -->
+            <div class="col-12 col-md-6 col-lg-4 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-header bg-color-primary mb-1 text-center">Category</h5>
+                  <p class="card-text text-center mt-2">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <h6 class="text-center">- Aristotle</h6>
+                    <p class="text-center">posted by <a href="#" class="card-link">Username</a></p>
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+              </div>
+            </div> --}}
+{{#each quotes as |single|}}
+<div class="col-12 col-md-6 col-lg-4 mb-3">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-header mb-1 text-center">{{single.category.category_name}}</h5>
+      <p class="card-text text-center mt-2">{{single.description}}</p>
+      <h6 class="text-center">-by {{single.author}}</h6>
+        <p class="text-center">posted by <a href="#" class="card-link">{{single.user.username}}</a></p>
+        <i class="fa-regular fa-heart"></i>
+    </div>
+  </div>
+</div>
+{{/each}}
