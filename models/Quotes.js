@@ -27,11 +27,11 @@ Quotes.init(
 					len: [2]
 			}
 		},
-		// likes: {
-		// 	type: DataTypes.INTEGER,
-		// 	allowNull: false,
-		// 	defaultValue: 0
-		// },
+		likes: {
+			type: DataTypes.INTEGER,
+			allowNull: false,
+			defaultValue: 0
+		},
 		user_id: {
 			type: DataTypes.INTEGER,
 			allowNull: false,

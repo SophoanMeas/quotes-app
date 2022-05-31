@@ -8,7 +8,6 @@ const quotesData = [
 		likes: 40,
 		user_id: 1,
 		category_id: 2,
-		is_liked: 0
 	},
 	{
 		description: 'Being deeply loved by someone gives you strength, while loving someone deeply gives you courage',
@@ -16,7 +15,6 @@ const quotesData = [
 		likes: 120,
 		user_id: 1,
 		category_id: 2,
-		is_liked: 0
 	},
 	{
 		description: 'I put my heard and my soul into my work, and have lost my mind in the process',
@@ -24,7 +22,6 @@ const quotesData = [
 		likes: 200,
 		user_id: 2,
 		category_id: 1,
-		is_liked: 0
 	},
 	{
 		description:
@@ -33,7 +30,6 @@ const quotesData = [
 		likes: 200,
 		user_id: 2,
 		category_id: 3,
-		is_liked: 0
 	},
 	{
 		description:
@@ -42,7 +38,6 @@ const quotesData = [
 		likes: 20,
 		user_id: 3,
 		category_id: 3,
-		is_liked: 0
 	},
 	{
 		description:
@@ -51,7 +46,6 @@ const quotesData = [
 		likes: 50,
 		user_id: 3,
 		category_id: 4,
-		is_liked: 0
 	},
 	{
 		description:
@@ -60,7 +54,7 @@ const quotesData = [
 		likes: 50,
 		user_id: 2,
 		category_id: 4,
-		is_liked: 0
+
 	},
 	{
 		description:
@@ -69,7 +63,7 @@ const quotesData = [
 		likes: 0,
 		user_id: 3,
 		category_id: 3,
-		is_liked: 0
+
 	},
 	{
 		description:
@@ -78,7 +72,7 @@ const quotesData = [
 		likes: 0,
 		user_id: 2,
 		category_id: 3,
-		is_liked: 0
+	
 	},
 	{
 		description:
@@ -87,7 +81,7 @@ const quotesData = [
 		likes: 0,
 		user_id: 1,
 		category_id: 2,
-		is_liked: 0
+
 	},
 	{
 		description:
@@ -96,7 +90,7 @@ const quotesData = [
 		likes: 0,
 		user_id: 1,
 		category_id: 4,
-		is_liked: 0
+
 	},
 	{
 		description:
@@ -105,7 +99,6 @@ const quotesData = [
 		likes: 0,
 		user_id: 1,
 		category_id: 4,
-		is_liked: 0
 	},
 ];
 
