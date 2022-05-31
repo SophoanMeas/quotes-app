@@ -33,7 +33,9 @@ router.get('/home', async (req, res) => {
 	}
 });
 
-router.get('/login', (req, res) => {
+router.get('/', (req, res) => {
+	res.render('login')
+
 	if (req.session.loggedIn) {
 		res.redirect('/');
 		return;
