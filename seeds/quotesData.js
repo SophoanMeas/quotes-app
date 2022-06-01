@@ -209,10 +209,48 @@ const quotesData = [
   {
     description:
       "Life is a succession of lessons which must be lived to be understood.",
-    author: "Albert Einstein",
+    author: "Helen Keller",
     likes: 50,
     user_id: 4,
     category_id: 3,
+  },
+  {
+    description:
+      "Life is ten percent what happens to you and ninety percent how you respond to it.",
+    author: "Charles Swindoll",
+    likes: 50,
+    user_id: 4,
+    category_id: 3,
+  },
+  {
+    description: "Try not. Do, or do not. There is no try.",
+    author: "Yoda",
+    likes: 50,
+    user_id: 4,
+    category_id: 1,
+  },
+  {
+    description: "Hard work beats talent when talent doesn’t work hard.",
+    author: "Tim Notke",
+    likes: 50,
+    user_id: 4,
+    category_id: 1,
+  },
+  {
+    description:
+      "Do the best you can until you know better. Then when you know better, do better.",
+    author: "Maya Angelou",
+    likes: 50,
+    user_id: 4,
+    category_id: 1,
+  },
+  {
+    description:
+      "Success is no accident. It is hard work, perseverance, learning, studying, sacrifice and most of all, love of what you are doing or learning to do.",
+    author: "Pele",
+    likes: 50,
+    user_id: 4,
+    category_id: 1,
   },
 ];
 
