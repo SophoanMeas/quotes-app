@@ -26,14 +26,14 @@
           <div class="row g-3 mb-5">
 
 
-         {{#each quotes as |single|}}
+         {{#each quoteResults }}
             <div class="col-12 col-md-6 col-lg-4 mb-3">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-header mb-1 text-center">{{single.category.category_name}}</h5>
-                  <p class="card-text text-center mt-2">{{single.description}}</p>
-                  <h6 class="text-center">-by {{single.author}}</h6>
-                    <p class="text-center">posted by <a href="#" class="card-link">{{single.user.username}}</a></p>
+                  <h5 class="card-header mb-1 text-center">{{category.category_name}}</h5>
+                  <p class="card-text text-center mt-2">{{description}}</p>
+                  <h6 class="text-center">-by {{author}}</h6>
+                    <p class="text-center">posted by <a href="#" class="card-link">{{user.username}}</a></p>
                     <i class="fa-regular fa-heart"></i>
                 </div>
               </div>
@@ -54,12 +54,4 @@
 
     <script src="/js/add-quote.js"></script>
     <script src="/js/search-quotes.js"></script>
-
-
-
-
-
-
-
-
 

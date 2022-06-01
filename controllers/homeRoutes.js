@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const { Quotes, User, Category } = require('../models');
 const sequelize = require('../config/connection');
+const Sequelize = require("sequelize");
+const op = Sequelize.Op;
 // TODO: Import the custom middleware
 
 // GET Quotes of the Day
@@ -77,6 +79,60 @@ router.get('/catego/:category', async (req, res) => {
 		res.status(500).json(err);
 	}
 });
+
+
+
+router.get('/results/:key', async (req, res) => {
+	try {
+		const quotesData = await 
+			Quotes.findAll({
+				attributes: ['id', 'description', 'author', 'likes'],
+				where: {
+					[op.or]: [
+						{description: 
+							{
+								[op.like]: `%${req.params.key}%`
+							}}, 
+						{author: 
+							{
+								[op.like]: `%${req.params.key}%`
+							}}
+					]
+
+					// author: 
+					// 		{
+					// 			[op.like]: `%${req.params.key}%`
+					// 		}
+
+				},
+				include: [
+					{
+						model: User,
+						attributes: ['username']
+					},
+					{
+						model: Category,
+						attributes: ['category_name']
+					},
+				],
+				order: [
+					['created_at', 'DESC'],
+			]
+			
+		})
+		const quoteResults = quotesData.map((quote) => quote.get({ plain: true }));
+		console.log(quoteResults);
+		res.render('queryresults', {
+			title: 'Query Results',
+			quoteResults,
+		});
+	} catch (err) {
+		console.log(err);
+		res.status(500).json(err);
+	}
+	
+});
+
 //FROM ADRIAN BRANCH=======================================
 
 module.exports = router;

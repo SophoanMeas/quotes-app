@@ -33,14 +33,14 @@ router.get('/', (req, res) => {
 
 
 // GET quotes by Keyword 
-router.get('/', (req, res) => {
+router.get('/word/:keyword', (req, res) => {
   Quotes.findAll({
     attributes: ['id', 'description', 'author', 'created_at'],
     where: {
         description: 
         {
           // [op.like]: `%${req.body.description}%`
-          [op.like]: `%${req.query.keyword}%`
+          [op.like]: `%${req.params.keyword}%`
         }
     },
     include: [
@@ -70,36 +70,23 @@ router.get('/', (req, res) => {
     });
 });
 
-// GET quotes by Author  
+// GET quotes by Author/Keyword
 router.get('/:query', (req, res) => {
 
   Quotes.findAll({
     attributes: ['id', 'description', 'author', 'created_at'],
-
-
-    // where: {
-    //     author: 
-    //     {
-    //       [op.like]: `%${req.params.query}%`
-    //     }
-    //   },
-
-
     where: {
       [op.or]: [
-        {category_id: 
+        {description: 
           {
             [op.like]: `%${req.params.query}%`
           }}, 
         {author: 
-              {
-                [op.like]: `%${req.params.query}%`
-              }}
+          {
+            [op.like]: `%${req.params.query}%`
+          }}
       ]
     },
-
-
-
     include: [
       {
         model: User,
