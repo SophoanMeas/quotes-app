@@ -1,0 +1,39 @@
+    <!-- POST A QUOTE Modal -->
+   <div class="modal fade" id="postQuoteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add a New Quote</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form class="form new-quote-form">
+              <div class="modal-body">
+                  <div class="form-group">
+                    <label for="newQuote" class="col-form-label">Quote:</label>
+                    <textarea class="form-control" id="newQuoteText"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="quoteTitle-name" class="col-form-label">Author:</label>
+                    <input type="text" class="form-control" id="newQuoteAuthor">
+                  </div>
+                  <h6>Categories</h6>
+                  <select class="form-select" aria-label="Default select example" id="newQuoteCategory">
+                    <option value="0">Select Quote Category</option>
+                    <option value="1">Work</option>
+                    <option value="2">Love</option>
+                    <option value="3">Life</option>
+                    <option value="4">Spirituality</option>
+                  </select>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-primary" type="submit">Add New Quote</button>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/add-quote.js"></script>

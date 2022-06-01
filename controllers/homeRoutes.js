@@ -27,7 +27,8 @@ router.get('/', async (req, res) => {
 			title: 'Random Quote',
 			quotes,
 			loggedIn: req.session.loggedIn,
-			username: req.session.username
+			userId: req.session.userId,
+			username: req.session.username,
 		});
 	} catch (err) {
 		console.log(err);
