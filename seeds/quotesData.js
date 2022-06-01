@@ -134,6 +134,86 @@ const quotesData = [
     user_id: 4,
     category_id: 1,
   },
+  {
+    description:
+      "The way I see it, if you want the rainbow, you gotta put up with the rain.",
+    author: "Dolly Parton",
+    likes: 50,
+    user_id: 4,
+    category_id: 3,
+  },
+  {
+    description:
+      "Everything negative – pressure, challenges – is all an opportunity for me to rise.",
+    author: "Kobe Bryant",
+    likes: 50,
+    user_id: 4,
+    category_id: 3,
+  },
+  {
+    description:
+      "A purpose of human life, no matter who is controlling it, is to love whoever is around to be loved.",
+    author: "Kurt Vonnegut",
+    likes: 50,
+    user_id: 4,
+    category_id: 2,
+  },
+  {
+    description:
+      "We are not human beings having a spiritual experience. We are spiritual beings having a human experience.",
+    author: "Pierre Teilhard de Chardin",
+    likes: 50,
+    user_id: 4,
+    category_id: 4,
+  },
+  {
+    description:
+      "What you are is God's gift to you, what you become is your gift to God.",
+    author: "Hans Urs von Balthasar",
+    likes: 50,
+    user_id: 4,
+    category_id: 4,
+  },
+  {
+    description:
+      "The more I want to get something done the less I call it work.",
+    author: "Richard Bach",
+    likes: 50,
+    user_id: 4,
+    category_id: 1,
+  },
+  {
+    description:
+      "Success is the sum of small efforts repeated day in and day out.",
+    author: "Robert Collier",
+    likes: 50,
+    user_id: 4,
+    category_id: 1,
+  },
+  {
+    description:
+      "Life imposes things on you that you can’t control, but you still have the choice of how you’re going to live through this.",
+    author: "Celine Dion",
+    likes: 50,
+    user_id: 4,
+    category_id: 3,
+  },
+  {
+    description:
+      "Life is like riding a bicycle. To keep your balance, you must keep moving.",
+    author: "Albert Einstein",
+    likes: 50,
+    user_id: 4,
+    category_id: 3,
+  },
+  {
+    description:
+      "Life is a succession of lessons which must be lived to be understood.",
+    author: "Albert Einstein",
+    likes: 50,
+    user_id: 4,
+    category_id: 3,
+  },
 ];
 
 const seedQuotes = () => Quotes.bulkCreate(quotesData);
