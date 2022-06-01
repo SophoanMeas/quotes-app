@@ -1,0 +1,92 @@
+
+<!-- MAIN START -->
+    <!-- MAIN START -->
+    <main>
+      <!-- HERO START -->
+      {{!-- <section class="hero">
+        <div class="container">
+          <div class="row justify-content-center">
+            <!-- Quote of the day section -->
+            <h2 class="m-3">Quote of the Day</h2>
+            <div class="col-12 mt-3 mb-5">
+
+                {{#each quotes as |single|}}
+                  <div class="card">
+                    <div class="card-header text-center">
+                      <h5>{{single.category.category_name}}</h5>
+                    </div>
+                      <div class="card-body text-center">
+                        <blockquote class="blockquote mb-0">
+                          <p>{{single.description}}</p>
+                          <footer class="blockquote-footer">by <cite title="Source Title">{{single.author}}</cite>
+                          </footer>
+                        </blockquote>
+                      </div>
+                    </div>
+                  {{/each}}
+                  
+            </div>
+          </div> 
+        </div> 
+      </section> --}}
+      <!-- HERO END -->
+
+
+      <!-- CATEGORIES SECTION --> 
+      <section class="categories">
+        <div class="container">
+          <h2 class="mt-4 text-center">Categories</h2>
+
+          <div class="text-center">
+            <div class="btn-group bg-white" role="group" aria-label="Quote Categories">
+              <button type="button" class="btn btn-outline-primary btn-lg">Work</button>
+              <button type="button" class="btn btn-outline-primary btn-lg">Love</button>
+              <button type="button" class="btn btn-outline-primary btn-lg">Life</button>
+              <button type="button" class="btn btn-outline-primary btn-lg">Spirituality</button>
+            </div>
+          </div>
+
+        </div>
+        <!-- Results section -->
+        <div class="container">
+          <h2 class="mt-4 text-center">Results</h2>
+          <div class="row g-3 mb-5">
+
+
+         {{#each quotes as |single|}}
+            <div class="col-12 col-md-6 col-lg-4 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-header mb-1 text-center">{{single.category.category_name}}</h5>
+                  <p class="card-text text-center mt-2">{{single.description}}</p>
+                  <h6 class="text-center">-by {{single.author}}</h6>
+                    <p class="text-center">posted by <a href="#" class="card-link">{{single.user.username}}</a></p>
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+              </div>
+            </div>
+          {{/each}}
+
+          
+          <!-- end of card-holder -->
+          </div>
+        </div>
+      </section>
+      <!-- RESULTS END -->
+      
+    </main>
+    <!-- MAIN END -->
+
+
+
+    <script src="/js/add-quote.js"></script>
+    <script src="/js/search-quotes.js"></script>
+
+
+
+
+
+
+
+
+

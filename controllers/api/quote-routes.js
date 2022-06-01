@@ -30,38 +30,17 @@ router.get('/', (req, res) => {
     });
 });
 
-//GET Random Quote - Quote fo the Day
-router.get('/day', (req, res) => {
-  Quotes.findAll({
-    attributes: ['id', 'description', 'author'],
-    order: sequelize.literal('rand()'), 
-    limit: 1,
-    include: [
-      {
-        model: User,
-        attributes: ['username']
-      },
-      {
-        model: Category,
-        attributes: ['category_name']
-      },
-    ]
-  })
-    .then(quoteData => res.json(quoteData))
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+
 
 // GET quotes by Keyword 
-router.get('/word', (req, res) => {
+router.get('/', (req, res) => {
   Quotes.findAll({
     attributes: ['id', 'description', 'author', 'created_at'],
     where: {
         description: 
         {
-          [op.like]: `%${req.body.description}%`
+          // [op.like]: `%${req.body.description}%`
+          [op.like]: `%${req.query.keyword}%`
         }
     },
     include: [
@@ -127,6 +106,35 @@ router.get('/author', (req, res) => {
       res.status(500).json(err);
     });
 });
+
+
+
+
+//GET Random Quote - Quote fo the Day
+router.get('/day', (req, res) => {
+  Quotes.findAll({
+    attributes: ['id', 'description', 'author'],
+    order: sequelize.literal('rand()'), 
+    limit: 1,
+    include: [
+      {
+        model: User,
+        attributes: ['username']
+      },
+      {
+        model: Category,
+        attributes: ['category_name']
+      },
+    ]
+  })
+    .then(quoteData => res.json(quoteData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+
 
 // UPDATE - LIKE a quote by USER Session --- UPDATE in the WORKS
 router.put('/like', (req, res) => {

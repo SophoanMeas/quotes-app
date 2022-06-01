@@ -33,6 +33,8 @@ router.get('/home', async (req, res) => {
 	}
 });
 
+
+
 router.get('/', (req, res) => {
 	res.render('login')
 
@@ -45,75 +47,41 @@ router.get('/', (req, res) => {
 });
 
 //FROM ADRIAN BRANCH=======================================
-// ROUTE for QUOTE Search by Category
-// GET quotes by category_id
-// router.get('/category/:category_id', (req, res) => {
-//   Quotes.findAll({
-//     attributes: ['id', 'description', 'author', 'is_liked', 'created_at'],
-//     // attributes: { exclude: ['updatedAt'] },
-//     where: {
-//       category_id: req.params.category_id
-//     },
-//     include: [
-//       {
-//         model: User,
-//         attributes: ['username']
-//       },
-//       {
-//         model: Category,
-//         attributes: ['category_name']
-//       },
-//     ],
-//     order: [
-//       ['is_liked', 'DESC'],
-//       ['created_at', 'DESC'],
-//   ],
-//   })
-//     .then(quoteData => {
-//       if (!quoteData) {
-//         res.status(404).json({ message: 'No Quotes Found' });
-//         return;
-//       }
-// 			// serializing the data
-// 			const quotes = quoteData.map((quote) => quote.get({ plain: true }));
-// 			res.render('homepage', { quotes	}
-// 				// loggedIn: req.session.loggedIn,
-// 				);
 
-// 			//passing data to the template
-//       res.render('quote', { quotes });
-//     })
-//     .catch(err => {
-//       console.log(err);
-//       res.status(500).json(err);
-//     });
-// });
-// router.get('/', (req, res) => {
-// 	Quotes.findAll({
-//     attributes: ['id', 'description', 'author', 'likes'],
-//     order: sequelize.literal('rand()'),
-//     limit: 1,
-//     include: [
-//       {
-//         model: User,
-//         attributes: ['username']
-//       },
-//       {
-//         model: Category,
-//         attributes: ['category_name']
-//       },
-//     ]
-//   })
-//     .then(quoteData => {
-// 			console.log(quoteData);
-// 			const quotes = quoteData.map(quote => quote.get({ plain: true }));
-// 			res.render('homepage', { quotes });
-// 		})
-//     .catch(err => {
-//       console.log(err);
-//       res.status(500).json(err);
-//     });
-// });
+router.get('/author/:category', async (req, res) => {
+	try {
+		const quotesData = await Quotes.findAll({
+			attributes: [ 'id', 'description', 'author', 'likes' ],
+			// order: sequelize.literal('rand()'),
+			where: {
+				category_id: req.params.category 
+        // {
+        //   [op.like]: `%${req.params.word}%`
+        //   [op.like]: `%${req.query.keyword}%`
+        // }
+			},
+			include: [
+				{
+					model: User,
+					attributes: [ 'username' ]
+				},
+				{
+					model: Category,
+					attributes: [ 'category_name' ]
+				}
+			]
+		});
+
+		const quotes = quotesData.map((quote) => quote.get({ plain: true }));
+		res.render('queryauthor', {
+			title: 'Query Quotes',
+			quotes,
+		});
+	} catch (err) {
+		console.log(err);
+		res.status(500).json(err);
+	}
+});
 //FROM ADRIAN BRANCH=======================================
 
 module.exports = router;
