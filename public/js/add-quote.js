@@ -1,5 +1,8 @@
 
 $(document).ready(function() {
+
+
+
 	async function addQuoteFormHandler(event) {
 		event.preventDefault();
 
@@ -33,6 +36,21 @@ $(document).ready(function() {
             }
         }
 	}
-
-	document.querySelector('.new-quote-form').addEventListener('submit', addQuoteFormHandler);
+    // document.querySelector('#addNewQuote').addEventListener('click', addQuote);
+	// document.querySelector('.new-quote-form').addEventListener('submit', getSession);
 });
+
+function addQuote(userId){
+   
+    if (userId){
+        $('#postQuoteModal').modal('show')
+        // document.querySelector('#postQuoteModal').shadow()
+    }else{
+        alert("You must log in before adding a new quote")
+        return;
+    }
+
+ }
+
+
+// id="addNewQuote" 

@@ -29,12 +29,13 @@
       
       {{#if loggedIn}}
             <i class="user-icon fa-solid fa-circle-user fa-2x"></i><p class="username text-left fa-solid">{{username}}</p> &nbsp; 
-            
+     
+                     {{/if}}
                  <div class="text-right">
-            <button type="button" id="addNewQuote" class="btn btn-med btn-dark" data-toggle="modal" data-target="#postQuoteModal">Add a quote</button>
+            <button type="button" id="addNewQuote" onclick="addQuote({{userId}})" class="btn btn-med btn-dark" data-toggle="modal" data-target="">Add a quote</button>
             </div>
           &nbsp;
-            {{/if}}
+   
           <div class="text-right">
             <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#loginModal">Login</a>
           </div>
