@@ -48,8 +48,9 @@ router.get('/', (req, res) => {
 	res.render('login');
 });
 
-//FROM ADRIAN BRANCH=======================================
+//Queries
 
+//SEARCH BY CATEGORY (buttons)
 router.get('/catego/:category', async (req, res) => {
 	try {
 		const quotesData = await Quotes.findAll({
@@ -81,28 +82,28 @@ router.get('/catego/:category', async (req, res) => {
 });
 
 
-
+//SEARCH BY KEYWORD - (searchbar)
 router.get('/results/:key', async (req, res) => {
 	try {
 		const quotesData = await 
 			Quotes.findAll({
 				attributes: ['id', 'description', 'author', 'likes'],
 				where: {
-					[op.or]: [
-						{description: 
-							{
-								[op.like]: `%${req.params.key}%`
-							}}, 
-						{author: 
-							{
-								[op.like]: `%${req.params.key}%`
-							}}
-					]
-
-					// author: 
+					// [op.or]: [
+					// 	{description: 
 					// 		{
 					// 			[op.like]: `%${req.params.key}%`
-					// 		}
+					// 		}}, 
+					// 	{author: 
+					// 		{
+					// 			[op.like]: `%${req.params.key}%`
+					// 		}}
+					// ]
+
+					description: 
+							{
+								[op.like]: `%${req.params.key}%`
+							}
 
 				},
 				include: [
@@ -122,7 +123,7 @@ router.get('/results/:key', async (req, res) => {
 		})
 		const quoteResults = quotesData.map((quote) => quote.get({ plain: true }));
 		console.log(quoteResults);
-		res.render('queryresults', {
+		res.render('querykeyword', {
 			title: 'Query Results',
 			quoteResults,
 		});
@@ -130,9 +131,46 @@ router.get('/results/:key', async (req, res) => {
 		console.log(err);
 		res.status(500).json(err);
 	}
-	
 });
 
-//FROM ADRIAN BRANCH=======================================
+
+//SEARCH BY AUTHOR - (searchbar)
+router.get('/author/:key', async (req, res) => {
+	try {
+		const quotesData = await 
+			Quotes.findAll({
+				attributes: ['id', 'description', 'author', 'likes'],
+				where: {
+					author: 
+							{
+								[op.like]: `%${req.params.key}%`
+							}
+				},
+				include: [
+					{
+						model: User,
+						attributes: ['username']
+					},
+					{
+						model: Category,
+						attributes: ['category_name']
+					},
+				],
+				order: [
+					['created_at', 'DESC'],
+			]
+			
+		})
+		const quoteResults = quotesData.map((quote) => quote.get({ plain: true }));
+		console.log(quoteResults);
+		res.render('queryauthor', {
+			title: 'Author Results',
+			quoteResults,
+		});
+	} catch (err) {
+		console.log(err);
+		res.status(500).json(err);
+	}
+});
 
 module.exports = router;
