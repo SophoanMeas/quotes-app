@@ -92,6 +92,7 @@ const quotesData = [
   {
     description:
       "You can safely assume you've created God in your own image when it turns out that God hates all the same people you do.",
+    author: "Anne Lamott",
     likes: 50,
     user_id: 4,
     category_id: 4,
@@ -99,6 +100,36 @@ const quotesData = [
   {
     description:
       "Build your own dreams or someone else will hire you to build theirs.",
+    author: "Farrah Gray",
+    likes: 50,
+    user_id: 4,
+    category_id: 1,
+  },
+  {
+    description: "The unexamined life is not worth living.",
+    author: "Socrates",
+    likes: 50,
+    user_id: 4,
+    category_id: 3,
+  },
+  {
+    description: "Love is like the wind, you can’t see it but you can feel it.",
+    author: "Nicholas Sparks",
+    likes: 50,
+    user_id: 4,
+    category_id: 2,
+  },
+  {
+    description: "Don’t count the days, make the days count.",
+    author: "Muhammad Ali",
+    likes: 50,
+    user_id: 4,
+    category_id: 1,
+  },
+  {
+    description:
+      "The only way to do great work is to love what you do. If you haven’t found it yet, keep looking. Don’t settle.",
+    author: "Steve Jobs",
     likes: 50,
     user_id: 4,
     category_id: 1,
