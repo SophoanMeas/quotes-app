@@ -23,7 +23,7 @@ Quotes.init(
 			type: DataTypes.STRING,
 			allowNull: false,
 			validate: {
-					isAlpha: true,
+					//  is: /^[a-z]+$/i, 
 					len: [2]
 			}
 		},

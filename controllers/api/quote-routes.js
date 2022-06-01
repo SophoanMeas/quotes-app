@@ -275,6 +275,7 @@ router.post('/add', auth, async (req, res) => {
 			category_id: req.body.category_id
 			// is_liked: 0,
 		});
+    res.status(200).json({post: "new quote added"});
 	} catch (err) {
 		console.log(err);
 		res.status(500).json(err);

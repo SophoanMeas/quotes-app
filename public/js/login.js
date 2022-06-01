@@ -39,6 +39,7 @@ $(document).ready(function() {
   
       if (res.ok) {
         document.location.replace('/');
+        alert('New user created successfully!')
       } else {
         alert('Failed to sign up.');
       }
