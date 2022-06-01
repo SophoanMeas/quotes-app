@@ -4,8 +4,6 @@ $(document).ready(function() {
 
     const username = document.querySelector('#username').value.trim();
     const password = document.querySelector('#password').value.trim();
-    console.log(username)
-    console.log(password)
 
     if (username && password){
       const res = await fetch('/api/users/login', {
@@ -16,9 +14,7 @@ $(document).ready(function() {
 
       if (res.ok){
         document.location.replace('/')
-        console.log("sucessful")
       }else{
-        console.log('login fail')
         alert('Failed to log in.')
       }
     }

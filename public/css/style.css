@@ -46,3 +46,14 @@
 main {
   background-color: #e7f2fd;
 }
+
+.username{
+font-size: 15px !important;
+padding: 0;
+margin: 5px 60px 0 15px;
+text-align: center;
+}
+
+.user-icon{
+  margin-right: .5rem;
+}
