@@ -71,15 +71,35 @@ router.get('/', (req, res) => {
 });
 
 // GET quotes by Author  
-router.get('/author', (req, res) => {
+router.get('/:query', (req, res) => {
+
   Quotes.findAll({
     attributes: ['id', 'description', 'author', 'created_at'],
+
+
+    // where: {
+    //     author: 
+    //     {
+    //       [op.like]: `%${req.params.query}%`
+    //     }
+    //   },
+
+
     where: {
-        author: 
-        {
-          [op.like]: `%${req.body.author}%`
-        }
+      [op.or]: [
+        {category_id: 
+          {
+            [op.like]: `%${req.params.query}%`
+          }}, 
+        {author: 
+              {
+                [op.like]: `%${req.params.query}%`
+              }}
+      ]
     },
+
+
+
     include: [
       {
         model: User,
@@ -92,7 +112,8 @@ router.get('/author', (req, res) => {
     ],
     order: [
       ['created_at', 'DESC'],
-  ],
+  ]
+  
 })
     .then(quoteData => {
       if (!quoteData) {
@@ -230,39 +251,39 @@ router.put('/:id', (req, res) => {
 
 
 // GET quotes by category_id
-router.get('/:category_id', (req, res) => {
-  Quotes.findAll({
-    attributes: ['id', 'description', 'author', 'is_liked', 'created_at'],
-    // attributes: { exclude: ['updatedAt'] },
-    where: {
-      category_id: req.params.category_id
-    },
-    include: [
-      {
-        model: User,
-        attributes: ['username']
-      },
-      {
-        model: Category,
-        attributes: ['category_name']
-      },
-    ],
-    order: [
-      ['created_at', 'DESC'],
-  ],
-  })
-    .then(quoteData => {
-      if (!quoteData) {
-        res.status(404).json({ message: 'No Quotes Found' });
-        return;
-      }
-      res.json(quoteData);
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+// router.get('/:category_id', (req, res) => {
+//   Quotes.findAll({
+//     attributes: ['id', 'description', 'author', 'is_liked', 'created_at'],
+//     // attributes: { exclude: ['updatedAt'] },
+//     where: {
+//       category_id: req.params.category_id
+//     },
+//     include: [
+//       {
+//         model: User,
+//         attributes: ['username']
+//       },
+//       {
+//         model: Category,
+//         attributes: ['category_name']
+//       },
+//     ],
+//     order: [
+//       ['created_at', 'DESC'],
+//   ],
+//   })
+//     .then(quoteData => {
+//       if (!quoteData) {
+//         res.status(404).json({ message: 'No Quotes Found' });
+//         return;
+//       }
+//       res.json(quoteData);
+//     })
+//     .catch(err => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// });
 
 
 // POST a Quote
