@@ -48,17 +48,12 @@ router.get('/', (req, res) => {
 
 //FROM ADRIAN BRANCH=======================================
 
-router.get('/author/:category', async (req, res) => {
+router.get('/catego/:category', async (req, res) => {
 	try {
 		const quotesData = await Quotes.findAll({
 			attributes: [ 'id', 'description', 'author', 'likes' ],
-			// order: sequelize.literal('rand()'),
 			where: {
 				category_id: req.params.category 
-        // {
-        //   [op.like]: `%${req.params.word}%`
-        //   [op.like]: `%${req.query.keyword}%`
-        // }
 			},
 			include: [
 				{
@@ -73,7 +68,7 @@ router.get('/author/:category', async (req, res) => {
 		});
 
 		const quotes = quotesData.map((quote) => quote.get({ plain: true }));
-		res.render('queryauthor', {
+		res.render('queryquotes', {
 			title: 'Query Quotes',
 			quotes,
 		});
