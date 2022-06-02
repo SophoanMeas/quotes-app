@@ -6,26 +6,23 @@
         alt="QuoteSmith Logo">
     </div>
     <!-- Search bar and radio buttons -->
-    <div class="col-3">
-      <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Search quotes"
-          aria-label="Search quotes" aria-describedby="basic-addon2">
-        <div class="input-group-append">
-          <button id="search-btn" class="btn btn-outline-primary" type="button">Search</button>
-        </div>
-      </div>
-      <!-- radio buttons -->
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions"
-          id="inlineRadio1" value="option1">
-        <label class="form-check-label" for="inlineRadio1">by Author</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions"
-          id="inlineRadio2" value="option2">
-        <label class="form-check-label" for="inlineRadio2">by Keyword</label>
-      </div>
-    </div>
+          <div class="col-3 ">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" id="text-query" placeholder="Search quotes" aria-label="Search quotes" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <button id="search-btn" class="btn btn-outline-primary" type="button">Search</button>
+          </div>
+        </div>  
+        <!-- radio buttons -->
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="option-author" value="author">
+            <label class="form-check-label" for="inlineRadio1">by Author</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="option-keyword" value="keyword">
+            <label class="form-check-label" for="inlineRadio2">by Keyword</label>
+          </div>
+        </div> 
     <div class="col">
       <span class="d-flex justify-content-end">
         <!-- Login -->

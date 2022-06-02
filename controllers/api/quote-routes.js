@@ -4,48 +4,88 @@ const sequelize = require('../../config/connection');
 const Sequelize = require('sequelize');
 const op = Sequelize.Op;
 
-// GET quotes by Author/Keyword
-router.get('/:query', (req, res) => {
+// GET quotes by Keyword 
+router.get('/word/:keyword', (req, res) => {
 	Quotes.findAll({
-		attributes: [ 'id', 'description', 'author', 'created_at' ],
-		where: {
-			[op.or]: [
-				{
-					description: {
-						[op.like]: `%${req.params.query}%`
-					}
-				},
-				{
-					author: {
-						[op.like]: `%${req.params.query}%`
-					}
-				}
-			]
+	  attributes: ['id', 'description', 'author', 'created_at'],
+	  where: {
+		  description: 
+		  {
+			// [op.like]: `%${req.body.description}%`
+			[op.like]: `%${req.params.keyword}%`
+		  }
+	  },
+	  include: [
+		{
+		  model: User,
+		  attributes: ['username']
 		},
-		include: [
+		{
+		  model: Category,
+		  attributes: ['category_name']
+		},
+	  ],
+	  order: [
+		['created_at', 'DESC'],
+	],
+  })
+	  .then(quoteData => {
+		if (!quoteData) {
+		  res.status(404).json({ message: 'No Quotes Found' });
+		  return;
+		}
+		res.json(quoteData);
+	  })
+	  .catch(err => {
+		console.log(err);
+		res.status(500).json(err);
+	  });
+  });
+  
+  // GET quotes by Author/Keyword
+  router.get('/:query', (req, res) => {
+  
+	Quotes.findAll({
+	  attributes: ['id', 'description', 'author', 'created_at'],
+	  where: {
+		[op.or]: [
+		  {description: 
 			{
-				model: User,
-				attributes: [ 'username' ]
-			},
+			  [op.like]: `%${req.params.query}%`
+			}}, 
+		  {author: 
 			{
-				model: Category,
-				attributes: [ 'category_name' ]
-			}
-		],
-		order: [ [ 'created_at', 'DESC' ] ]
-	})
-		.then((quoteData) => {
-			if (!quoteData) {
-				res.status(404).json({ message: 'No Quotes Found' });
-				return;
-			}
-			res.json(quoteData);
-		})
-		.catch((err) => {
-			console.log(err);
-			res.status(500).json(err);
-		});
-});
+			  [op.like]: `%${req.params.query}%`
+			}}
+		]
+	  },
+	  include: [
+		{
+		  model: User,
+		  attributes: ['username']
+		},
+		{
+		  model: Category,
+		  attributes: ['category_name']
+		},
+	  ],
+	  order: [
+		['created_at', 'DESC'],
+	]
+	
+  })
+	  .then(quoteData => {
+		if (!quoteData) {
+		  res.status(404).json({ message: 'No Quotes Found' });
+		  return;
+		}
+		res.json(quoteData);
+	  })
+	  .catch(err => {
+		console.log(err);
+		res.status(500).json(err);
+	  });
+  });
 
 // POST a Quote
 router.post('/', (req, res) => {
@@ -55,7 +95,6 @@ router.post('/', (req, res) => {
 		likes: 0,
 		user_id: req.body.user_id, //req.session.user_id
 		category_id: req.body.category_id,
-		is_liked: 0
 	})
 		.then((quoteData) => res.json(quoteData))
 		.catch((err) => {

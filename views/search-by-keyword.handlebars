@@ -1,0 +1,38 @@
+
+<main>
+    <section class="categories">
+        <div class="container">
+            <h2 class="mt-4 text-center">Categories</h2>
+
+            <div class="text-center">
+                <div class="btn-group bg-white" role="group" aria-label="Quote
+                    Categories">
+                    <a href="/home">
+                        <button type="button" class="btn btn-primary btn-lg">Go
+                            Back</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <h2 class="mt-4 text-center">Results</h2>
+            <div class="row g-3 mb-5">
+                {{#each quoteResults }}
+                <div class="col-12 col-md-6 col-lg-4 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-header mb-1 text-center">{{category.category_name}}</h5>
+                            <p class="card-text text-center mt-2">{{description}}</p>
+                            <h6 class="text-center">-by {{author}}</h6>
+                            <p class="text-center">posted by <a href="#"
+                                    class="card-link">{{user.username}}</a></p>
+                            <i class="fa-regular fa-heart"></i>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </section>
+</main>
