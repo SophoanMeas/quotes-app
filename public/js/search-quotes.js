@@ -8,12 +8,10 @@ async function resultQuotes(event) {
 
   if(authorSelected.checked === true){
     console.log('Author Query =' + value)
-
     const response = await fetch(`/author/${value}`);
 
     if (response.ok) {
       document.location.replace(`/author/${value}`);
-
       console.log(`data was fetched form ${value} AUTHOR`)
 
     } else {
@@ -22,18 +20,14 @@ async function resultQuotes(event) {
 
 } else if (keyWordSelected.checked === true){
   console.log('Keyword Query =' + value)
-
-  console.log('Author Query =' + value)
-
   const response = await fetch(`/results/${value}`);
 
   if (response.ok) {
     document.location.replace(`/results/${value}`);
-
     console.log(`data was fetched form ${value} KEYWORD`)
 
   } else {
-  alert(response.statusText);
+    alert(response.statusText);
   }
 
 

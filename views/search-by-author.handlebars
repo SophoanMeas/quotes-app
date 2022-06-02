@@ -1,32 +1,21 @@
-
-<!-- MAIN START -->
-    <!-- MAIN START -->
-    <main>
-      <!-- HERO START -->
-
-
-
-      <!-- CATEGORIES SECTION --> 
+ <main>
       <section class="categories">
         <div class="container">
-          <h2 class="mt-4 text-center">Categories</h2>
-
+          {{!-- <h2 class="mt-4 text-center">Categories</h2> --}}
           <div class="text-center">
             <div class="btn-group bg-white" role="group" aria-label="Quote Categories">
-              <a href="/home">
+              <a href="/home" class="mt-4 text-center">
                 <button type="button" class="btn btn-primary btn-lg">Go Back</button>
               </a>
             </div>
           </div>
-
         </div>
-        <!-- Results section -->
         <div class="container">
           <h2 class="mt-4 text-center">Results</h2>
           <div class="row g-3 mb-5">
 
-
          {{#each quoteResults }}
+
             <div class="col-12 col-md-6 col-lg-4 mb-3">
               <div class="card">
                 <div class="card-body">
@@ -39,18 +28,12 @@
               </div>
             </div>
           {{/each}}
-
-          
-          <!-- end of card-holder -->
           </div>
         </div>
       </section>
-      <!-- RESULTS END -->
-      
     </main>
-    <!-- MAIN END -->
 
-
+    
 
     <script src="/js/add-quote.js"></script>
     <script src="/js/search-quotes.js"></script>

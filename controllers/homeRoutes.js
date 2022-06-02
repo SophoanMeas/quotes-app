@@ -71,7 +71,7 @@ router.get('/catego/:category', async (req, res) => {
 		});
 
 		const quotes = quotesData.map((quote) => quote.get({ plain: true }));
-		res.render('queryquotes', {
+		res.render('quote-category', {
 			title: 'Query Quotes',
 			quotes,
 		});
@@ -112,7 +112,7 @@ router.get('/results/:key', async (req, res) => {
 		})
 		const quoteResults = quotesData.map((quote) => quote.get({ plain: true }));
 		console.log(quoteResults);
-		res.render('querykeyword', {
+		res.render('search-by-keyword', {
 			title: 'Query Results',
 			quoteResults,
 		});
@@ -152,7 +152,7 @@ router.get('/author/:key', async (req, res) => {
 		})
 		const quoteResults = quotesData.map((quote) => quote.get({ plain: true }));
 		console.log(quoteResults);
-		res.render('queryauthor', {
+		res.render('search-by-author', {
 			title: 'Author Results',
 			quoteResults,
 		});
