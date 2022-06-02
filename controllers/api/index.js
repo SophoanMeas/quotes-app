@@ -7,6 +7,6 @@ const categoryRoutes = require('./category-routes') //not to be used by the fron
 
 router.use('/quotes', quoteRoutes);
 router.use('/users', userRoutes);
-router.use('/categories', categoryRoutes);
+router.use('/quotes/category', categoryRoutes);
 
 module.exports = router

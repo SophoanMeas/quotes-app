@@ -3,7 +3,7 @@ const { Quotes, User, Category } = require('../models');
 const sequelize = require('../config/connection');
 // TODO: Import the custom middleware
 
-// GET Quotes of the Day
+// GET random quotes
 router.get('/', async (req, res) => {
 	try {
 		const quotesData = await Quotes.findAll({
