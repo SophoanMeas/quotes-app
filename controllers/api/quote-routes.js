@@ -5,7 +5,7 @@ const Sequelize = require('sequelize');
 const op = Sequelize.Op;
 
 // GET quotes by Keyword 
-router.get('/word/:keyword', (req, res) => {
+router.get('/:keyword', (req, res) => {
 	Quotes.findAll({
 	  attributes: ['id', 'description', 'author', 'created_at'],
 	  where: {
