@@ -13,7 +13,7 @@ $(document).ready(function() {
       });
 
       if (res.ok){
-        document.location.replace('/')
+        document.location.replace('/home')
       }else{
         alert('Failed to log in.')
       }
@@ -38,7 +38,7 @@ $(document).ready(function() {
  
   
       if (res.ok) {
-        document.location.replace('/');
+        document.location.replace('/home');
         alert('New user created successfully!')
       } else {
         alert('Failed to sign up.');
