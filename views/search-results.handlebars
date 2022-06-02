@@ -1,23 +1,19 @@
- <main>
-      <section class="categories">
-        <div class="container">
-          <h2 class="mt-4 text-center">Categories</h2>
-          <div class="text-center">
-            <div class="btn-group bg-white" role="group" aria-label="Quote Categories">
-              <a href="/">
-                <button type="button" class="btn btn-primary btn-lg">Go Back</button>
-              </a>
+
+<section class="categories">
+    <div class="container">
+        <h2 class="text-center mt-3">{{title}}</h2>
+        <div class="text-center">
+            <div class="btn-group bg-white mt-3 mb-5 back-btn" role="group" aria-label="Quote
+                Categories">
+                <a href="/">
+                    <button type="button" class="btn btn-primary btn-lg">Go Back</button>
+                </a>
             </div>
-          </div>
         </div>
-        <div class="container">
-          <h2 class="mt-4 text-center">Results</h2>
-          <div class="row g-3 mb-5">
-            
-         {{#each quoteResults }}
-       {{>quote-card}}
-          {{/each}}
-          </div>
+        <div class="row g-3 mb-5">
+            {{#each quoteResults}}
+            {{>quote-card}}
+            {{/each}}
         </div>
-      </section>
-    </main>
+    </div>
+</section>

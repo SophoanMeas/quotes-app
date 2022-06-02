@@ -5,12 +5,12 @@ const Sequelize = require('sequelize');
 const op = Sequelize.Op;
 
 // POST a Quote
-router.post('/', (req, res) => {
+router.post('/add', (req, res) => {
 	Quotes.create({
 		description: req.body.description,
 		author: req.body.author,
 		likes: 0,
-		user_id: req.body.user_id, //req.session.user_id
+		user_id: req.body.id, //req.session.user_id
 		category_id: req.body.category_id,
 	})
 		.then((quoteData) => res.json(quoteData))
@@ -26,7 +26,7 @@ router.get('/keyword/:key', async (req, res) => {
 	try {
 		const quotesData = await 
 			Quotes.findAll({
-				attributes: ['id', 'description', 'author', 'likes'],
+				attributes: ['id', 'description', 'author'],
 				where: {
 					description: 
 							{
@@ -66,7 +66,7 @@ router.get('/author/:key', async (req, res) => {
 	try {
 		const quotesData = await 
 			Quotes.findAll({
-				attributes: ['id', 'description', 'author', 'likes'],
+				attributes: ['id', 'description', 'author'],
 				where: {
 					author: 
 							{
@@ -90,7 +90,7 @@ router.get('/author/:key', async (req, res) => {
 		})
 		const quoteResults = quotesData.map((quote) => quote.get({ plain: true }));
 		console.log(quoteResults);
-		res.render('search-by-author', {
+		res.render('search-results', {
 			title: 'Author Results',
 			quoteResults,
 		});
