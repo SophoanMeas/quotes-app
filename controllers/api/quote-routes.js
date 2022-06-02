@@ -35,6 +35,8 @@ router.get('/', (req, res) => {
 router.get('/catego/:category', async (req, res) => {
 	try {
 		const quotesData = await Quotes.findAll({
+      order: sequelize.literal('rand()'),
+			limit: 6,
 			attributes: [ 'id', 'description', 'author', 'likes' ],
 			where: {
 				category_id: req.params.category 
@@ -63,86 +65,6 @@ router.get('/catego/:category', async (req, res) => {
 });
 
 
-
-//SEARCH BY KEYWORD - (searchbar)
-router.get('/results/:key', async (req, res) => {
-	try {
-		const quotesData = await 
-			Quotes.findAll({
-				attributes: ['id', 'description', 'author', 'likes'],
-				where: {
-					description: 
-							{
-								[op.like]: `%${req.params.key}%`
-							}
-
-				},
-				include: [
-					{
-						model: User,
-						attributes: ['username']
-					},
-					{
-						model: Category,
-						attributes: ['category_name']
-					},
-				],
-				order: [
-					['created_at', 'DESC'],
-			]
-			
-		})
-		const quoteResults = quotesData.map((quote) => quote.get({ plain: true }));
-		console.log(quoteResults);
-		res.render('search-by-keyword', {
-			title: 'Query Results',
-			quoteResults,
-		});
-	} catch (err) {
-		console.log(err);
-		res.status(500).json(err);
-	}
-});
-
-
-//SEARCH BY AUTHOR - (searchbar)
-router.get('/author/:key', async (req, res) => {
-	try {
-		const quotesData = await 
-			Quotes.findAll({
-				attributes: ['id', 'description', 'author', 'likes'],
-				where: {
-					author: 
-							{
-								[op.like]: `%${req.params.key}%`
-							}
-				},
-				include: [
-					{
-						model: User,
-						attributes: ['username']
-					},
-					{
-						model: Category,
-						attributes: ['category_name']
-					},
-				],
-				order: [
-					['created_at', 'DESC'],
-			]
-			
-		})
-		const quoteResults = quotesData.map((quote) => quote.get({ plain: true }));
-		console.log(quoteResults);
-		res.render('search-by-author', {
-			title: 'Author Results',
-			quoteResults,
-		});
-	} catch (err) {
-		console.log(err);
-		res.status(500).json(err);
-	}
-});
 
 
 
