@@ -89,17 +89,6 @@ router.get('/results/:key', async (req, res) => {
 			Quotes.findAll({
 				attributes: ['id', 'description', 'author', 'likes'],
 				where: {
-					// [op.or]: [
-					// 	{description: 
-					// 		{
-					// 			[op.like]: `%${req.params.key}%`
-					// 		}}, 
-					// 	{author: 
-					// 		{
-					// 			[op.like]: `%${req.params.key}%`
-					// 		}}
-					// ]
-
 					description: 
 							{
 								[op.like]: `%${req.params.key}%`
