@@ -5,7 +5,7 @@ const logout = async () => {
   });
 
   if (response.ok) {
-    document.location.replace('/');
+    document.location.replace('/home');
   } else {
     alert('Not logged in.');
   }

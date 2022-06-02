@@ -28,7 +28,7 @@ Quotes.init(
 			}
 		},
 		likes: {
-			type: DataTypes.INTEGER,
+			type: DataTypes.BOOLEAN,
 			allowNull: false,
 			defaultValue: 0
 		},
