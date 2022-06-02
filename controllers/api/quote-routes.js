@@ -4,89 +4,6 @@ const sequelize = require('../../config/connection');
 const Sequelize = require('sequelize');
 const op = Sequelize.Op;
 
-// GET quotes by Keyword 
-router.get('/:keyword', (req, res) => {
-	Quotes.findAll({
-	  attributes: ['id', 'description', 'author', 'created_at'],
-	  where: {
-		  description: 
-		  {
-			// [op.like]: `%${req.body.description}%`
-			[op.like]: `%${req.params.keyword}%`
-		  }
-	  },
-	  include: [
-		{
-		  model: User,
-		  attributes: ['username']
-		},
-		{
-		  model: Category,
-		  attributes: ['category_name']
-		},
-	  ],
-	  order: [
-		['created_at', 'DESC'],
-	],
-  })
-	  .then(quoteData => {
-		if (!quoteData) {
-		  res.status(404).json({ message: 'No Quotes Found' });
-		  return;
-		}
-		res.json(quoteData);
-	  })
-	  .catch(err => {
-		console.log(err);
-		res.status(500).json(err);
-	  });
-  });
-  
-  // GET quotes by Author/Keyword
-  router.get('/:query', (req, res) => {
-  
-	Quotes.findAll({
-	  attributes: ['id', 'description', 'author', 'created_at'],
-	  where: {
-		[op.or]: [
-		  {description: 
-			{
-			  [op.like]: `%${req.params.query}%`
-			}}, 
-		  {author: 
-			{
-			  [op.like]: `%${req.params.query}%`
-			}}
-		]
-	  },
-	  include: [
-		{
-		  model: User,
-		  attributes: ['username']
-		},
-		{
-		  model: Category,
-		  attributes: ['category_name']
-		},
-	  ],
-	  order: [
-		['created_at', 'DESC'],
-	]
-	
-  })
-	  .then(quoteData => {
-		if (!quoteData) {
-		  res.status(404).json({ message: 'No Quotes Found' });
-		  return;
-		}
-		res.json(quoteData);
-	  })
-	  .catch(err => {
-		console.log(err);
-		res.status(500).json(err);
-	  });
-  });
-
 // POST a Quote
 router.post('/', (req, res) => {
 	Quotes.create({
@@ -102,5 +19,86 @@ router.post('/', (req, res) => {
 			res.status(500).json(err);
 		});
 });
+
+
+//SEARCH BY KEYWORD - (searchbar)
+router.get('/keyword/:key', async (req, res) => {
+	try {
+		const quotesData = await 
+			Quotes.findAll({
+				attributes: ['id', 'description', 'author', 'likes'],
+				where: {
+					description: 
+							{
+								[op.like]: `%${req.params.key}%`
+							}
+
+				},
+				include: [
+					{
+						model: User,
+						attributes: ['username']
+					},
+					{
+						model: Category,
+						attributes: ['category_name']
+					},
+				],
+				order: [
+					['created_at', 'DESC'],
+			]
+			
+		})
+		const quoteResults = quotesData.map((quote) => quote.get({ plain: true }));
+		console.log(quoteResults);
+		res.render('search-results', {
+			title: 'Query Results',
+			quoteResults,
+		});
+	} catch (err) {
+		console.log(err);
+		res.status(500).json(err);
+	}
+});
+
+//SEARCH BY AUTHOR - (searchbar)
+router.get('/author/:key', async (req, res) => {
+	try {
+		const quotesData = await 
+			Quotes.findAll({
+				attributes: ['id', 'description', 'author', 'likes'],
+				where: {
+					author: 
+							{
+								[op.like]: `%${req.params.key}%`
+							}
+				},
+				include: [
+					{
+						model: User,
+						attributes: ['username']
+					},
+					{
+						model: Category,
+						attributes: ['category_name']
+					},
+				],
+				order: [
+					['created_at', 'DESC'],
+			]
+			
+		})
+		const quoteResults = quotesData.map((quote) => quote.get({ plain: true }));
+		console.log(quoteResults);
+		res.render('search-by-author', {
+			title: 'Author Results',
+			quoteResults,
+		});
+	} catch (err) {
+		console.log(err);
+		res.status(500).json(err);
+	}
+});
+
 
 module.exports = router;
