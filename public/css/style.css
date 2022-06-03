@@ -81,3 +81,7 @@ text-align: center;
    outline: 0 none;
 }
 .back-btn:focus { outline: none; }
+
+/* .home-logo img:hover{
+  cursor: pointer;
+} */

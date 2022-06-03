@@ -49,11 +49,11 @@ router.get('/keyword/:key', async (req, res) => {
 			]
 			
 		})
-		const quoteResults = quotesData.map((quote) => quote.get({ plain: true }));
-		console.log(quoteResults);
-		res.render('search-results', {
-			title: 'Query Results',
-			quoteResults,
+		const quotes = quotesData.map((quote) => quote.get({ plain: true }));
+		console.log(quotes);
+		res.render('display-quotes', {
+			title: 'Results',
+			quotes,
 		});
 	} catch (err) {
 		console.log(err);
@@ -88,11 +88,11 @@ router.get('/author/:key', async (req, res) => {
 			]
 			
 		})
-		const quoteResults = quotesData.map((quote) => quote.get({ plain: true }));
-		console.log(quoteResults);
-		res.render('search-results', {
-			title: 'Author Results',
-			quoteResults,
+		const quotes = quotesData.map((quote) => quote.get({ plain: true }));
+		console.log(quotes);
+		res.render('display-quotes', {
+			title: 'Results',
+			quotes,
 		});
 	} catch (err) {
 		console.log(err);
