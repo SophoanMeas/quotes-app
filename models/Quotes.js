@@ -19,12 +19,12 @@ Quotes.init(
 			}
 		},
 
-		author:{ 
+		author: {
 			type: DataTypes.STRING,
 			allowNull: false,
 			validate: {
-					//  is: /^[a-z]+$/i, 
-					len: [2]
+				//  is: /^[a-z]+$/i,
+				len: [ 2 ]
 			}
 		},
 		likes: {
@@ -47,12 +47,12 @@ Quotes.init(
 				model: 'category',
 				key: 'id'
 			}
-		},
+		}
 	},
 	{
 		sequelize,
 		freezeTableName: true,
-    timestamps: true,
+		timestamps: true,
 		underscored: true,
 		modelName: 'quotes'
 	}

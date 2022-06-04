@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 const auth = require('../../utils/auth');
+
 // CREATE new user
 router.post('/', async (req, res) => {
 	try {
@@ -17,7 +18,6 @@ router.post('/', async (req, res) => {
 			req.session.username = userData.username;
 			req.session.loggedIn = true;
 			res.status(200).json(userData);
-	
 		});
 	} catch (err) {
 		console.log(err);
@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
 	}
 });
 
-// login
+// Login
 router.post('/login', async (req, res) => {
 	try {
 		const userData = await User.findOne({
@@ -39,18 +39,16 @@ router.post('/login', async (req, res) => {
 		}
 		const password = await userData.checkPassword(req.body.password);
 		if (!password) {
-			res.status(400).json({ response: 'Incorrect username or password. Please try again!'});
+			res.status(400).json({ response: 'Incorrect username or password. Please try again!' });
 			return;
 		}
-		// const user = userData.get({ plain: true });
-		
+
 		req.session.save(() => {
-				req.session.userId = userData.id;
-				req.session.username = userData.username;
-				req.session.loggedIn = true;
+			req.session.userId = userData.id;
+			req.session.username = userData.username;
+			req.session.loggedIn = true;
 
 			res.status(200).json({ response: 'You are now logged in!', username: userData });
-			
 		});
 	} catch (err) {
 		console.log(err);
@@ -61,9 +59,8 @@ router.post('/login', async (req, res) => {
 // Logout
 router.post('/logout', auth, (req, res) => {
 	if (req.session.loggedIn) {
-        req.session.destroy(() => {
-            res.status(204).end();
-
+		req.session.destroy(() => {
+			res.status(204).end();
 		});
 	} else {
 		res.status(404).end();

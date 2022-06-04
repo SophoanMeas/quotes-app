@@ -10,8 +10,8 @@ router.post('/add', (req, res) => {
 		description: req.body.description,
 		author: req.body.author,
 		likes: 0,
-		user_id: req.body.id, //req.session.user_id
-		category_id: req.body.category_id,
+		user_id: req.body.id, // get session id
+		category_id: req.body.category_id
 	})
 		.then((quoteData) => res.json(quoteData))
 		.catch((err) => {
@@ -20,47 +20,40 @@ router.post('/add', (req, res) => {
 		});
 });
 
-
 //SEARCH BY KEYWORD - (searchbar)
 router.get('/keyword/:key', async (req, res) => {
 	try {
-		const quotesData = await 
-			Quotes.findAll({
-				attributes: ['id', 'description', 'author'],
-				where: {
-					description: 
-							{
-								[op.like]: `%${req.params.key}%`
-							}
-
+		const quotesData = await Quotes.findAll({
+			attributes: [ 'id', 'description', 'author' ],
+			where: {
+				description: {
+					[op.like]: `%${req.params.key}%`
+				}
+			},
+			include: [
+				{
+					model: User,
+					attributes: [ 'username' ]
 				},
-				include: [
-					{
-						model: User,
-						attributes: ['username']
-					},
-					{
-						model: Category,
-						attributes: ['category_name']
-					},
-				],
-				order: [
-					['created_at', 'DESC'],
-			]
-			
-		})
+				{
+					model: Category,
+					attributes: [ 'category_name' ]
+				}
+			],
+			order: [ [ 'created_at', 'DESC' ] ]
+		});
 		const quotes = quotesData.map((quote) => quote.get({ plain: true }));
 
-		if (Object.keys(quotes).length === 0){
+		if (Object.keys(quotes).length === 0) {
 			res.render('display-quotes', {
-				title: 'No result found',
+				title: 'No result found'
 			});
-		}else{
-		res.render('display-quotes', {
-			title: 'Results',
-			quotes,
-		});
-	}
+		} else {
+			res.render('display-quotes', {
+				title: 'Results',
+				quotes
+			});
+		}
 	} catch (err) {
 		console.log(err);
 		res.status(500).json(err);
@@ -70,46 +63,40 @@ router.get('/keyword/:key', async (req, res) => {
 //SEARCH BY AUTHOR - (searchbar)
 router.get('/author/:key', async (req, res) => {
 	try {
-		const quotesData = await 
-			Quotes.findAll({
-				attributes: ['id', 'description', 'author'],
-				where: {
-					author: 
-							{
-								[op.like]: `%${req.params.key}%`
-							}
+		const quotesData = await Quotes.findAll({
+			attributes: [ 'id', 'description', 'author' ],
+			where: {
+				author: {
+					[op.like]: `%${req.params.key}%`
+				}
+			},
+			include: [
+				{
+					model: User,
+					attributes: [ 'username' ]
 				},
-				include: [
-					{
-						model: User,
-						attributes: ['username']
-					},
-					{
-						model: Category,
-						attributes: ['category_name']
-					},
-				],
-				order: [
-					['created_at', 'DESC'],
-			]
-			
-		})
-		const quotes = quotesData.map((quote) => quote.get({ plain: true }));
-		if (Object.keys(quotes).length === 0){
-			res.render('display-quotes', {
-				title: 'No result found',
-			});
-		}else{
-		res.render('display-quotes', {
-			title: 'Results',
-			quotes,
+				{
+					model: Category,
+					attributes: [ 'category_name' ]
+				}
+			],
+			order: [ [ 'created_at', 'DESC' ] ]
 		});
-	}
+		const quotes = quotesData.map((quote) => quote.get({ plain: true }));
+		if (Object.keys(quotes).length === 0) {
+			res.render('display-quotes', {
+				title: 'No result found'
+			});
+		} else {
+			res.render('display-quotes', {
+				title: 'Results',
+				quotes
+			});
+		}
 	} catch (err) {
 		console.log(err);
 		res.status(500).json(err);
 	}
 });
-
 
 module.exports = router;
