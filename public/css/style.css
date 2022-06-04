@@ -5,21 +5,6 @@
   text-shadow: 1px 1px 2px black;;
 }
 
-
-
-/* .btn-primary {
-  background-color: #378a98;
-}
-.btn-primary:hover {
-  background-color: #216d87;
-}
-.btn-primary:active, .btn-primary:after {
-  background-color: #378a98;
-} */
-/* End of Global Styles */
-
-/* Header Styles */
-
 .hero {
   background-image: url(../images/QuoteSmith-Hero-BG.jpg);
   background-size: cover !important;
@@ -30,17 +15,15 @@
   background-color: #102e54;
   color: white;
 }
+.card-text{
+  font-size: 20px;
+
+}
 
 .modal-title {
   text-align: center !important;
 }
 .modal-header {
-  background-color: #102e54;
-  color: white;
- 
-}
-
-.card-header{
   background-color: #102e54;
   color: white;
  
@@ -64,6 +47,7 @@ text-align: center;
 }
 
 .user-icon{
+  margin-left: 3rem;
   margin-right: .5rem;
 }
 
@@ -82,6 +66,7 @@ text-align: center;
 }
 .back-btn:focus { outline: none; }
 
-/* .home-logo img:hover{
-  cursor: pointer;
-} */
+input[type=radio] {
+  width: 20px;
+  height: 20px;
+}

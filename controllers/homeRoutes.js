@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const { Quotes, User, Category } = require('../models');
 const sequelize = require('../config/connection');
-// TODO: Import the custom middleware
 
 // GET random quotes
 router.get('/', async (req, res) => {
@@ -27,8 +26,8 @@ router.get('/', async (req, res) => {
 			title: 'Random Quote',
 			quotes,
 			loggedIn: req.session.loggedIn,
-			userId: req.session.userId,
-			username: req.session.username,
+			userId: req.session.userId, // access session id from homepage
+			username: req.session.username
 		});
 	} catch (err) {
 		console.log(err);

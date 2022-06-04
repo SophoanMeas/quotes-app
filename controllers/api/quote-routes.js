@@ -50,11 +50,17 @@ router.get('/keyword/:key', async (req, res) => {
 			
 		})
 		const quotes = quotesData.map((quote) => quote.get({ plain: true }));
-		console.log(quotes);
+
+		if (Object.keys(quotes).length === 0){
+			res.render('display-quotes', {
+				title: 'No result found',
+			});
+		}else{
 		res.render('display-quotes', {
 			title: 'Results',
 			quotes,
 		});
+	}
 	} catch (err) {
 		console.log(err);
 		res.status(500).json(err);
@@ -89,11 +95,16 @@ router.get('/author/:key', async (req, res) => {
 			
 		})
 		const quotes = quotesData.map((quote) => quote.get({ plain: true }));
-		console.log(quotes);
+		if (Object.keys(quotes).length === 0){
+			res.render('display-quotes', {
+				title: 'No result found',
+			});
+		}else{
 		res.render('display-quotes', {
 			title: 'Results',
 			quotes,
 		});
+	}
 	} catch (err) {
 		console.log(err);
 		res.status(500).json(err);
