@@ -1,0 +1,20 @@
+<section class="categories">
+    <div class="container">
+        <div class="text-center">
+            <div class="btn-group bg-white mt-4 mb-4 back-btn" role="group" aria-label="Quote
+                Categories">
+                <a href="/">
+                    <button type="button" class="btn btn-primary btn-lg">Home</button>
+                </a>
+            </div>
+              <h2 class="text-center">{{title}}</h2>
+        </div>
+        <div class="container mb-4">
+            <div class="row">
+                {{#each quotes as |quote|}}
+                {{>quote-card}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,98 @@
+/* Global Styles */
+
+.container{
+  padding: 0  !important;
+
+}
+.hero h2 {
+  color: white;
+  text-align: center !important;
+  text-shadow: 1px 1px 2px black;;
+}
+
+.hero {
+  background-image: url(../images/QuoteSmith-Hero-BG.jpg);
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+.card-header {
+  background-color: #102e54;
+  color: white;
+}
+.card-text{
+  font-size: 16px;
+
+}
+.card {
+  max-width: 100%;
+
+}
+
+.modal-title {
+  text-align: center !important;
+}
+.modal-header {
+  background-color: #102e54;
+  color: white;
+ 
+}
+
+.card-header{
+  background-color: #102e54;
+  color: white;
+ 
+}
+
+.modal-footer {
+  background-color: #e7f2fd;
+}
+/* End of Header Styles */
+
+/* Main Styles */
+main {
+  background-color: #e7f2fd;
+}
+
+.username{
+  font-size: 15px !important;
+  padding: 0;
+  margin: 5px 60px 0 15px;
+  text-align: center;
+  }
+  
+  .user-icon{
+    margin-right: .5rem;
+    margin-left: 3rem;
+  }
+/* font-size: 20px !important;
+padding: 0;
+text-align: center;
+}
+
+.user-icon{
+  margin-left: 3rem;
+  margin-right: .5rem;
+} */
+
+.placeholderImg {
+  display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* background-color: white;
+    border-radius: .3em; */
+}
+
+.back-btn{
+  border-radius: 30px;
+  border-style:hidden;
+  overflow: hidden;
+   border: none;
+   outline: 0 none;
+}
+.back-btn:focus { outline: none; }
+
+input[type=radio] {
+  width: 20px;
+  height: 20px;
+}
