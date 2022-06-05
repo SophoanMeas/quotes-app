@@ -4,19 +4,18 @@ const Quotes = require('./Quotes');
 
 // create associations
 User.hasMany(Quotes, {
-  foreignKey: 'posted_by'
+	foreignKey: 'posted_by'
 });
 Quotes.belongsTo(User, {
-  foreignKey: 'posted_by',
-  onDelete: 'SET NULL'
+	foreignKey: 'posted_by',
+	onDelete: 'SET NULL'
 });
 
 Quotes.belongsTo(Category, {
-  foreignKey: 'category_id'
+	foreignKey: 'category_id'
 });
 Category.hasMany(Quotes, {
-  foreignKey: 'category_id'
+	foreignKey: 'category_id'
 });
-
 
 module.exports = { Quotes, User, Category };
