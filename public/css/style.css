@@ -1,4 +1,9 @@
 /* Global Styles */
+
+.container{
+  padding: 0  !important;
+
+}
 .hero h2 {
   color: white;
   text-align: center !important;
@@ -16,7 +21,11 @@
   color: white;
 }
 .card-text{
-  font-size: 20px;
+  font-size: 16px;
+
+}
+.card {
+  max-width: 100%;
 
 }
 
@@ -40,9 +49,8 @@ main {
 }
 
 .username{
-font-size: 15px !important;
+font-size: 20px !important;
 padding: 0;
-margin: 5px 60px 0 15px;
 text-align: center;
 }
 

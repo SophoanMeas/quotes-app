@@ -6,7 +6,7 @@ const sequelize = require('../config/connection');
 router.get('/', async (req, res) => {
 	try {
 		const quotesData = await Quotes.findAll({
-			attributes: [ 'id', 'description', 'author', 'likes' ],
+			attributes: [ 'id', 'description', 'author'],
 			order: sequelize.literal('rand()'),
 			limit: 1,
 			include: [
@@ -22,26 +22,19 @@ router.get('/', async (req, res) => {
 		});
 
 		const quotes = quotesData.map((quote) => quote.get({ plain: true }));
+		
 		res.render('homepage', {
 			title: 'Random Quote',
 			quotes,
 			loggedIn: req.session.loggedIn,
-			userId: req.session.userId, // access session id from homepage
-			username: req.session.username
+			userId: req.session.userId,
+			username: req.session.username,
 		});
+
 	} catch (err) {
 		console.log(err);
 		res.status(500).json(err);
 	}
-});
-
-router.get('/login', (req, res) => {
-	if (req.session.loggedIn) {
-		res.redirect('/');
-		return;
-	}
-
-	res.render('login');
 });
 
 module.exports = router;

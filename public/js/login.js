@@ -45,6 +45,7 @@ $(document).ready(function() {
 		}
 	};
 
+
 	document.querySelector('.login-form').addEventListener('submit', loginHandler);
 	document.querySelector('.signup-form').addEventListener('submit', signupHandler);
 });

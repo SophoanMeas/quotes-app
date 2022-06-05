@@ -10,11 +10,11 @@ router.get('/category', (req, res) => {
 	});
 });
 
-router.get('/:id', (req, res) => {
-	Quotes.findAll({
+router.get('/:id',  async(req, res) => {
+	Quotes.findAll({ 
 		attributes: [ 'id', 'description', 'author', 'created_at' ],
 		order: sequelize.literal('rand()'),
-		limit: 5,
+		limit: 6,
 		where: {
 			category_id: req.params.id
 		},
@@ -36,7 +36,13 @@ router.get('/:id', (req, res) => {
 				return;
 			}
 			const quotes = quoteData.map((quote) => quote.get({ plain: true }));
-			res.render('display-quotes', { quotes, title: 'Results' });
+			res.render('display-quotes', {
+				title: 'Results',
+				quotes,
+				loggedIn: req.session.loggedIn,
+				userId: req.session.userId,
+				username: req.session.username,
+			});
 		})
 		.catch((err) => {
 			console.log(err);

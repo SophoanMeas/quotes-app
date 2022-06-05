@@ -46,12 +46,18 @@ router.get('/keyword/:key', async (req, res) => {
 
 		if (Object.keys(quotes).length === 0) {
 			res.render('display-quotes', {
-				title: 'No result found'
+				title: 'No result found',
+				loggedIn: req.session.loggedIn,
+				userId: req.session.userId,
+				username: req.session.username,
 			});
 		} else {
 			res.render('display-quotes', {
 				title: 'Results',
-				quotes
+				quotes,
+				loggedIn: req.session.loggedIn,
+				userId: req.session.userId,
+				username: req.session.username,
 			});
 		}
 	} catch (err) {
@@ -85,12 +91,17 @@ router.get('/author/:key', async (req, res) => {
 		const quotes = quotesData.map((quote) => quote.get({ plain: true }));
 		if (Object.keys(quotes).length === 0) {
 			res.render('display-quotes', {
-				title: 'No result found'
+				title: 'No result found',
+				loggedIn: req.session.loggedIn,
+				userId: req.session.userId,
 			});
 		} else {
 			res.render('display-quotes', {
 				title: 'Results',
-				quotes
+				quotes,
+				loggedIn: req.session.loggedIn,
+				userId: req.session.userId,
+				username: req.session.username,
 			});
 		}
 	} catch (err) {
