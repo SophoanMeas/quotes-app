@@ -27,6 +27,8 @@ QuoteSmith has quotes to help you get through life, because here at QuoteSmith, 
 
 https://github.com/SophoanMeas/quotes-smith
 
+[Try out the app on Heroku](https://group2-quotesmith.herokuapp.com/)
+
 ![Screenshot of QuoteSmith](./public/images/QuoteSmith-screenshot.png)
 
 ## Contribution
